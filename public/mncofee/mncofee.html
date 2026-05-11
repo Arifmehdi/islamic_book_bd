@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cafeu</title>
+        <link rel="shortcut icon" type="image/png" href="assets/img/log.png">
+        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com/">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&amp;family=Jost&amp;family=Nunito&amp;family=Oswald:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/font-awesome/all.min.css">
+        <link rel="stylesheet" href="assets/css/animation/aos.css">
+        <link rel="stylesheet" href="assets/css/aida-home-styles.css">
+    </head>
+    <body>
+        <div id="preloader">
+            <div id="container" class="container-preloader">
+                <div class="animation-preloader">
+                    <div class="spinner"></div>
+                </div>
+                <div class="loader-section section-left"></div>
+                <div class="loader-section section-right"></div>
+            </div>
+        </div>
+        <!---------------
+            Header 
+        -------------->
+        <header>
+            <!---------------
+            Navbar 
+        -------------->
+            <nav>
+                <div class="ad-navbar-sm d-flex justify-content-between align-items-center d-lg-none">
+                    <div>
+                        <img src="assets/img/logo/logo.png" alt="">
+                    </div>
+                    <div
+                        class="ad-responsive-menubar"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasTop"
+                        aria-controls="offcanvasTop"
+                    >
+                        <i class="fa-thin fa-bars-sort"></i>
+                    </div>
+                </div>
+                <div class=" d-none d-lg-block">
+                    <div class="ad-header-container">
+                        <div class="ad-header-menu-container">
+                            <div class="d-flex gap-3">
+                                <div
+                                    class="ad-search-icon"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasTopSearch"
+                                    aria-controls="offcanvasTopSearch"
+                                >
+                                    <i class="fa-light fa-magnifying-glass"></i>
+                                </div>
+                                <div
+                                    class="offcanvas offcanvas-top navbar-offcanvas-lg"
+                                    tabindex="-1"
+                                    id="offcanvasTopSearch"
+                                    aria-labelledby="offcanvasTopLabel"
+                                >
+                                    <div class="offcanvas-header">
+                                        <h5 id="offcanvasTopLabel"></h5>
+                                        <div class="ad-responsive-close-btn">
+                                            <button
+                                                type="button"
+                                                class="btn-close text-reset"
+                                                data-bs-dismiss="offcanvas"
+                                                aria-label="Close"
+                                            ></button>
+                                        </div>
+                                    </div>
+                                    <div class="offcanvas-body navbar-offcanvas-search">
+                                        <input
+                                            type="text"
+                                            name=""
+                                            id=""
+                                            placeholder="Search Your Food"
+                                        >
+                                        <br>
+                                        <button>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <nav class="ad-navlist">
+                                <li >
+                                    <a href="mncofee_home.html" class="ad-nav-anchor">Home</a>
+                                </li>
+                                <li >
+                                    <a href="mncofee_about.html" class="ad-nav-anchor">About Us</a>
+                                </li>
+                                <li >
+                                    <a href="mncofee_menu.html" class="ad-nav-anchor">Products</a>
+                                </li>
+                                <li>
+                                    <a href="mncofee_reservation.html" class="ad-nav-anchor">Supply Chain/Our Process</a>
+                                    <div class="grad-nav-border">
+                                        <div class="left-nav-border"></div>
+                                        <div class="right-nav-border"></div>
+                                    </div>
+                                </li>
+                            </nav>
+                        </div>
+                        <div class="ad-logo">
+                            <a href="mncofee_home.html">
+                                <img src="assets/img/logo/cofee.png" alt="">
+                            </a>
+                        </div>
+                        <div class="ad-header-pages-container">
+                            <li class="dropdown">
+                                <a href="mncofee_gallery.html" class="ad-nav-anchor">Gallery</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="mncofee_contact.html" class="ad-nav-anchor">Contact</a>
+                            </li>
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="ad-header-cart-container">
+                                    <div class="ad-cart-img-container">
+                                        <i class="fa-light fa-cart-shopping"></i>
+                                        <span class="ad-cart-count">01</span>
+                                    </div>
+                                </div>
+                                <div class="fs-5">
+                                    <a href="reservation.html">
+                                        <button>Our Process</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="offcanvas offcanvas-top h-100 ad-responsive-navbar"
+                    tabindex="-1"
+                    id="offcanvasTop"
+                    aria-labelledby="offcanvasTopLabel"
+                >
+                    <div class="d-flex align-items-center justify-content-between mt-3 mx-3">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.png" alt="">
+                        </a>
+                        <div class="ad-responsive-close-btn">
+                            <button
+                                type="button"
+                                class="btn-close text-reset"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="ad-responsive-navbar-list">
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">Home+</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="index.html">Home 1</a>
+                                        <a href="home-2.html">Home 2</a>
+                                        <a href="home-3.html">Home 3</a>
+                                        <a href="home-4.html">Home 4</a>
+                                        <a href="home-5.html">Home 5</a>
+                                        <a href="home-6.html">Home 6</a>
+                                        <a href="home-7.html">Home 7</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">About+</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="about.html">About 1</a>
+                                        <a href="about-2.html">About 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">Menu+</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="menu.html">Menu 1</a>
+                                        <a href="menu-2.html">Menu 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="reservation.html">
+                                    <p>Reservation</p>
+                                </a>
+                            </li>
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">Shop+</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="shop.html">Shop</a>
+                                        <a href="shop-details.html">Shop Details</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">Pages</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="faq.html">FAQs</a>
+                                        <a href="gallery.html">Gallery</a>
+                                        <a href="service.html">Service</a>
+                                        <a href="service-details.html">Service Details</a>
+                                        <a href="project-details.html">Project Details</a>
+                                        <a href="team.html">Team</a>
+                                        <a href="team-view.html">Team Details</a>
+                                        <a href="pricing.html">Pricing</a>
+                                        <a href="cart.html">Cart</a>
+                                        <a href="wishlist.html">Wishlist</a>
+                                        <a href="blog.html">Blog</a>
+                                        <a href="blog-grid.html">Blog Grid</a>
+                                        <a href="singel-post.html">Blog Details</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="responsive-dropdown">
+                                    <a href="#">Contact+</a>
+                                    <li class="responsive-dropdown-content">
+                                        <a href="contact.html">Contact 1</a>
+                                        <a href="contact-2.html">Contact 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="ad-responsive-search position-relative">
+                            <input type="text" placeholder="Search Your Food">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="d-flex gap-4 mt-4 text-center ad-responsive-account">
+                            <div>
+                                <i class="fa-solid fa-user"></i>
+                                <p>Account</p>
+                            </div>
+                            <div class="position-relative">
+                                <i class="fa-light fa-cart-shopping"></i>
+                                <span>01</span>
+                                <p>View Cart</p>
+                            </div>
+                            <div class="fs-5 ad-responsive-btn text-center">
+                                <a href="reservation.html">
+                                    <button>Book A Table</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!---------------
+            Banner 
+        -------------->
+        <section>
+            <div>
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active position-relative">
+                            <div class="text-end">
+                                <img
+                                    class="ad-banner-img "
+                                    src="assets/img/aida-images/banner.png"
+                                    class="d-block w-100"
+                                    alt="..."
+                                >
+                            </div>
+                            <div class="ad-banner-content">
+                                <div class="ad-banner-text-container">
+                                    <div class="ad-banner-text-effect">
+                                        <p>Uttara Coffee House</p>
+                                    <h1>different spice for a different taste</h1>
+                                    <a href="about-2.html">
+                                        <button>Read More</button>
+                                    </a>
+                                    </div>
+                                </div>
+                            <div class="ad-banner-person-container">
+                                <div class="ad-banner-person ">
+                                    <img src="assets/img/aida-images/banner-person1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative">
+                        <div class="text-end">
+                            <img
+                                class="ad-banner-img "
+                                src="assets/img/aida-images/banner.png"
+                                class="d-block w-100"
+                                alt="..."
+                            >
+                        </div>
+                        <div class="ad-banner-content">
+                            <div class="ad-banner-text-container">
+                                <p>Uttara Coffee House</p>
+                                <h1>different spice for a different taste</h1>
+                                <a href="about-2.html">
+                                    <button>Read More</button>
+                                </a>
+                            </div>
+                            <div class="ad-banner-person-container">
+                                <div class="ad-banner-person ">
+                                    <img src="assets/img/aida-images/banner-person1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative">
+                        <div class="text-end">
+                            <img
+                                class="ad-banner-img "
+                                src="assets/img/aida-images/banner.png"
+                                class="d-block w-100"
+                                alt="..."
+                            >
+                        </div>
+                        <div class="ad-banner-content">
+                            <div class="ad-banner-text-container" data-aos="fade-right">
+                                <p>Uttara Coffee House</p>
+                                <h1>different spice for a different taste</h1>
+                                <a href="about-2.html">
+                                    <button>Read More</button>
+                                </a>
+                            </div>
+                            <div class="ad-banner-person-container">
+                                <div class="ad-banner-person ">
+                                    <img src="assets/img/aida-images/banner-person1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button
+                        class="carousel-control-prev ad-carousel-prev-btn"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev"
+                    >
+                        <div class="ad-carousel-arrow">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </div>
+                    </button>
+                </div>
+                <div>
+                    <button
+                        class="carousel-control-next ad-carousel-next-btn"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next"
+                    >
+                        <div class="ad-carousel-arrow">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+<main>
+    <!---------------
+            About Us 
+        -------------->
+    <section class="ad-about-section">
+        <div class="container ad-about-container">
+            <div class="ad-about-image-container position-relative">
+                <div class="ad-about-person-image">
+                    <img src="assets/img/aida-images/about-picture1.png" alt="">
+                </div>
+                <div class="mt-md-5 mt-4 ad-about-side-image-container">
+                    <img class="ad-about-side-tea" src="assets/img/aida-images/about-picture2.png" alt="">
+                    <img class=" ad-about-bottom-image" src="assets/img/aida-images/about-picture3.png" alt="">
+                    <div class="ad-about-rounded-text">
+                        <img src="assets/img/aida-images/about-rounded-shape.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="ad-about-text-container">
+                <h5>about us</h5>
+                <h4>
+                    Cafeu restoracia online
+                    <br class="d-none d-xxl-block">
+                    awesome food for you
+                </h4>
+                <p>
+                    Quis autem vel eum iure reprehenderit qui in evoluptate velit
+                    <br class="d-none d-xxl-block">
+                    esse qua nihil molestiae consequatur, 
+                vel illum qui dolorem eum
+                    <br class="d-none d-xxl-block">
+                    fugiat quvoluptas nulla pariatureaqua ipsa quae ab illo
+                </p>
+                <div class="ad-about-list-container">
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-regular fa-square-check"></i>
+                        <p>Project Quality Management Plan</p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-regular fa-square-check"></i>
+                        <p>The Ability to Delegate Tasks</p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-regular fa-square-check"></i>
+                        <p>It might be a finished or unfinished</p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-regular fa-square-check"></i>
+                        <p>Project Quality Management Plan</p>
+                    </div>
+                </div>
+                <a href="about-2.html">Read More</a>
+            </div>
+        </div>
+    </section>
+    <!---------------
+           Video Section
+        -------------->
+    <section>
+        <div class="ad-video-container position-relative">
+            <img src="assets/img/aida-images/video-shape.png" alt="">
+            <div class="ad-video-icon">
+                <a class="text-decoration-none" href="https://youtu.be/Z6Dx-o3vfJY?si=_7CxQt0bH6A0VuJL" data-fslightbox>
+                    <i class="fa-solid fa-play"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-------------------
+          Quality Service
+         ----------------->
+    <section data-aos="fade-up">
+        <div class="ad-service">
+            <div class="ad-service-title-container">
+                <img src="assets/img/aida-images/service-icon.png" alt="">
+                <h4>Quality Service</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus asperiores
+                    <br class="d-none d-md-block">
+                    necessitatibus, porro quis animi doloribus quo deleniti id voluptate voluptas?
+                </p>
+            </div>
+            <div class="container ad-service-container">
+                <div class="ad-single-service position-relative">
+                    <img src="assets/img/aida-images/service-icon1.png" alt="">
+                    <h5>Grilled Beef Steak</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit.
+                        <br>
+                        Cupiditate eaque ab quaerat cum
+                        <br>
+                        praesentium harum!
+                    </p>
+                    <a href="#" class="ad-service-btn">Read More</a>
+                    <img class="w-100 ad-service-image" src="assets/img/aida-images/service-image1.png" alt="">
+                    <div class="ad-single-service-overlay">
+                        <div>
+                            <img src="assets/img/aida-images/service-icon2.png" alt="">
+                            <h5>Grilled Beef Steak</h5>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur elit.
+                                <br>
+                                Cupiditate eaque ab quaerat cum
+                                <br>
+                                praesentium harum!
+                            </p>
+                            <a href="service-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ad-single-service position-relative">
+                    <img src="assets/img/aida-images/service-icon3.png" alt="">
+                    <h5>Roast chicken drumsticks</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit.
+                        <br>
+                        Cupiditate eaque ab quaerat cum
+                        <br>
+                        praesentium harum!
+                    </p>
+                    <a href="#" class="ad-service-btn">Read More</a>
+                    <img class="w-100 ad-service-image" src="assets/img/aida-images/service-image3.png" alt="">
+                    <div class="ad-single-service-overlay">
+                        <div>
+                            <img src="assets/img/aida-images/service-icon2.png" alt="">
+                            <h5>Grilled Beef Steak</h5>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur elit.
+                                <br>
+                                Cupiditate eaque ab quaerat cum
+                                <br>
+                                praesentium harum!
+                            </p>
+                            <a href="service-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ad-single-service position-relative">
+                    <img src="assets/img/aida-images/service-icon1.png" alt="">
+                    <h5>Healthy fresh fish</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur elit.
+                        <br>
+                        Cupiditate eaque ab quaerat cum
+                        <br>
+                        praesentium harum!
+                    </p>
+                    <a href="#" class="ad-service-btn">Read More</a>
+                    <img class="w-100 ad-service-image" src="assets/img/aida-images/service-image1.png" alt="">
+                    <div class="ad-single-service-overlay">
+                        <div>
+                            <img src="assets/img/aida-images/service-icon2.png" alt="">
+                            <h5>Grilled Beef Steak</h5>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur elit.
+                                <br>
+                                Cupiditate eaque ab quaerat cum
+                                <br>
+                                praesentium harum!
+                            </p>
+                            <a href="service-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-------------------
+          Special Offer
+         ----------------->
+    <section data-aos="fade-up">
+        <div class="ad-offer">
+            <div class="ad-offer-title-container">
+                <img src="assets/img/aida-images/service-icon.png" alt="">
+                <h4>Try Our Special Offers</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat aspernatur ipsa veritatis
+                    <br class="d-none d-md-block">
+                    exercitationem consectetur cupiditate minima quasi voluptates, eius magni?
+                </p>
+            </div>
+            <ul class="nav ad-offer-tab-container" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link active"
+                        id="hot-sell-1-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-1-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-1-tab-pane"
+                        aria-selected="true"
+                    >
+                        STARTERS
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="hot-sell-2-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-2-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-2-tab-pane"
+                        aria-selected="false"
+                    >
+                        LUNCH
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="hot-sell-3-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-3-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-3-tab-pane"
+                        aria-selected="false"
+                    >
+                        DINNER
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="hot-sell-4-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-4-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-4-tab-pane"
+                        aria-selected="false"
+                    >
+                        SIDES
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="hot-sell-5-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-5-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-5-tab-pane"
+                        aria-selected="false"
+                    >
+                        DESSERTS
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link"
+                        id="hot-sell-6-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#hot-sell-6-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="hot-sell-6-tab-pane"
+                        aria-selected="false"
+                    >
+                        BEVERAGES
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div
+                    class="tab-pane fade show active"
+                    id="hot-sell-1-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-1-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <div class="">
+                                <a href="shop-details.html">
+                                    <img src="assets/img/aida-images/offer-image1.png" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>CROQUE MONSIEUR</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image2.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Beef Belly Tacos</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image3.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Tender Octopus</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image4.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Greek Salab food</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image5.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Signature BBQ</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="hot-sell-2-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-2-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image3.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Tender Octopus</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image4.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Greek Salab food</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image5.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Signature BBQ</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="hot-sell-3-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-3-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image1.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>CROQUE MONSIEUR</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image3.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Tender Octopus</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image4.png" alt="">
+                            </a>
+                            <div>
+                                <a href="#" class="ad-offer-card-text-container">
+                                    <h5>Greek Salab food</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image5.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Signature BBQ</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="hot-sell-4-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-4-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image2.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Beef Belly Tacos</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image3.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Tender Octopus</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image5.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Signature BBQ</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="hot-sell-5-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-5-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image1.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>CROQUE MONSIEUR</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image2.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Beef Belly Tacos</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image3.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Tender Octopus</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image4.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Greek Salab food</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="tab-pane fade"
+                    id="hot-sell-6-tab-pane"
+                    role="tabpanel"
+                    aria-labelledby="hot-sell-6-tab"
+                    tabindex="0"
+                >
+                    <div class="container ad-offer-container">
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image1.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>CROQUE MONSIEUR</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image4.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Greek Salab food</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="shop-details.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image5.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Signature BBQ</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                        <div class="ad-offer-single-card">
+                            <a href="shop-details.html">
+                                <img src="assets/img/aida-images/offer-image6.png" alt="">
+                            </a>
+                            <div>
+                                <a href="shop-details.html" class="ad-offer-card-text-container">
+                                    <h5>Pastrami FOOD</h5>
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="ad-offer-dotted">------------------------------</span>
+                                        <span class="ad-offer-responsive-dotted">-------------</span>
+                                        <span class="ad-offer-price">  $20.30</span>
+                                    </div>
+                                </a>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A asperiores necessitatibus vel non eos.</p>
+                                <a href="cart.html">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-offer-bottom-container">
+                <div class="ad-offer-bottom-text-container">
+                    <div class="grad-border">
+                        <div class="left-border"></div>
+                        <div class="right-border"></div>
+                    </div>
+                    <h5>During winter daily from 7:30 am to 9.30 pm</h5>
+                    <div class="grad-border">
+                        <div class="left-border"></div>
+                        <div class="right-border"></div>
+                    </div>
+                </div>
+                <a href="shop.html">
+                    <button>
+                        Order Online
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-------------------
+             Our Chef
+         ----------------->
+    <section data-aos="fade-up">
+        <div class="ad-chef">
+            <div class="ad-chef-title-container">
+                <img src="assets/img/aida-images/service-icon.png" alt="">
+                <h4>Group of professional chefs</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat aspernatur ipsa veritatis
+                    <br class="d-none d-md-block">
+                    exercitationem consectetur cupiditate minima quasi voluptates, eius magni?
+                </p>
+            </div>
+            <div class="container ad-chef-container">
+                <div class="position-relative ad-chef-card">
+                    <div class="ad-chef-single-card">
+                        <div class="ad-chef-image d-flex gap-3 align-items-end">
+                            <div class="overflow-hidden">
+                                <a href="team-view.html">
+                                    <img src="assets/img/aida-images/chef1.png" class="ad-chef-person" alt="">
+                                </a>
+                            </div>
+                            <div class="ad-chef-icon-container">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-facebook"></i>
+                            </div>
+                        </div>
+                        <a href="team-view.html">
+                            <h4>Alberto Da Silva</h4>
+                        </a>
+                        <p>Senior Chef</p>
+                    </div>
+                </div>
+                <div class="position-relative ad-chef-card">
+                    <div class="ad-chef-single-card">
+                        <div class="ad-chef-image d-flex gap-3 align-items-end">
+                            <div class="overflow-hidden">
+                                <a href="team-view.html">
+                                    <img src="assets/img/aida-images/chef2.png" class="ad-chef-person" alt="">
+                                </a>
+                            </div>
+                            <div class="ad-chef-icon-container">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-facebook"></i>
+                            </div>
+                        </div>
+                        <a href="team-view.html">
+                            <h4>Rachael Haynes</h4>
+                        </a>
+                        <p>Chef De Partie</p>
+                    </div>
+                </div>
+                <div class="position-relative ad-chef-card">
+                    <div class="ad-chef-single-card">
+                        <div class="ad-chef-image d-flex gap-3 align-items-end">
+                            <div class="overflow-hidden">
+                                <a href="team-view.html">
+                                    <img src="assets/img/aida-images/chef3.png" class="ad-chef-person" alt="">
+                                </a>
+                            </div>
+                            <div class="ad-chef-icon-container">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                                <i class="fa-brands fa-twitter"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-facebook"></i>
+                            </div>
+                        </div>
+                        <a href="team-view.html">
+                            <h4>James Anderson</h4>
+                        </a>
+                        <p>Resta Marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-----------------------
+            Online Reservation
+         ---------------------->
+    <section data-aos="fade-up">
+        <div class="ad-reservation position-relative">
+            <div class="d-flex justify-content-center">
+                <div class="ad-reservation-form-container">
+                    <img src="assets/img/aida-images/service-icon.png" alt="">
+                    <h4>Online Reservation</h4>
+                    <div>
+                        <div class="row ad-reservation-form">
+                            <div class="col-12 col-sm-6 position-relative">
+                                <input
+                                    type="text"
+                                    name=""
+                                    id=""
+                                    placeholder="Name"
+                                >
+                                <i class="fa-regular fa-user"></i>
+                            </div>
+                            <div class="col-12 col-sm-6 position-relative">
+                                <input
+                                    type="text"
+                                    name=""
+                                    id=""
+                                    placeholder="Phone"
+                                >
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="row ad-reservation-form">
+                            <div class="col-12 col-sm-6 position-relative">
+                                <select name="" id="">
+                                    <option
+                                        value=""
+                                        selected
+                                        disabled
+                                        hidden
+                                    >Persons</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="4+">5+</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-6 position-relative">
+                                <select name="" id="">
+                                    <option
+                                        value=""
+                                        selected
+                                        disabled
+                                        hidden
+                                    >Location</option>
+                                    <option value="Mirpur">Mirpur</option>
+                                    <option value="Uttara">Uttara</option>
+                                    <option value="Nikunjo">Nikunjo</option>
+                                    <option value="Khilkhet">Khilkhet</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row ad-reservation-form">
+                            <div class="col-sm-6 col-12 position-relative">
+                                <input
+                                    type="date"
+                                    name=""
+                                    id=""
+                                    placeholder="Date"
+                                >
+                            </div>
+                            <div class="col-12 col-sm-6 position-relative">
+                                <input
+                                    type="time"
+                                    name=""
+                                    id=""
+                                    placeholder="Phone"
+                                >
+                            </div>
+                        </div>
+                        <a href="reservation.html">
+                            <button>Book A Table</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="container ad-reservation-container">
+                <div class="ad-reservation-single-content">
+                    <img src="assets/img/aida-images/happy-face-reservation.png" alt="">
+                    <div>
+                        <p>5670</p>
+                        <span>Happy Customers</span>
+                    </div>
+                </div>
+                <div class="ad-reservation-line-shape">
+                    <img src="assets/img/aida-images/reservation-line-shape.png" alt="">
+                </div>
+                <div class="ad-reservation-single-content">
+                    <img src="assets/img/aida-images/reservation-chef.png" alt="">
+                    <div>
+                        <p>29</p>
+                        <span>Pationate Chef's</span>
+                    </div>
+                </div>
+                <div class="ad-reservation-line-shape">
+                    <img src="assets/img/aida-images/reservation-line-shape.png" alt="">
+                </div>
+                <div class="ad-reservation-single-content">
+                    <img src="assets/img/aida-images/reservation-rice.png" alt="">
+                    <div>
+                        <p>260</p>
+                        <span>Favourite Dishes</span>
+                    </div>
+                </div>
+                <div class="ad-reservation-line-shape d-xs-none">
+                    <img src="assets/img/aida-images/reservation-line-shape.png" alt="">
+                </div>
+                <div class="ad-reservation-single-content">
+                    <img src="assets/img/aida-images/reservation-review.png" alt="">
+                    <div>
+                        <p>778</p>
+                        <span>Customer Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-----------------------
+            Customer Review
+         ---------------------->
+    <section data-aos="fade-up">
+        <div class="ad-customer-review">
+            <div class="ad-review-title-container">
+                <img src="assets/img/aida-images/service-icon.png" alt="">
+                <h4>What Our Customer Says</h4>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat aspernatur ipsa veritatis
+                    <br class="d-none d-md-block">
+                    exercitationem consectetur cupiditate minima quasi voluptates, eius magni?
+                </p>
+            </div>
+            <div class="container position-relative">
+                <div class="ad-review-bg-container">
+                    <div class="overflow-hidden">
+                        <img src="assets/img/aida-images/review-bg-person.png" alt="">
+                    </div>
+                    <div class="d-flex gap-3">
+                        <i class="fa-solid fa-chevron-left" data-bs-target="#carouselExampleControls" data-bs-slide="prev"></i>
+                        <i class="fa-solid fa-chevron-right" data-bs-target="#carouselExampleControls" data-bs-slide="next"></i>
+                    </div>
+                </div>
+                <div>
+                    <div id="carouselExampleControls" class="carousel slide ad-review-carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active ad-single-review">
+                                <div class="d-flex gap-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    On the other hand, we denounce with righteous indignation and dislike men
+                                    <br class="d-none d-md-block">
+                                    who are so beguiled and demoralized by the charms of pleasure of the
+                                    <br class="d-none d-md-block">
+                                    moment, so blinded by desire, that they cannot foresee the pain and trouble
+                                    <br class="d-none d-md-block">
+                                    that are bound to ensue
+                                </p>
+                                <div class="ad-review-person-container">
+                                    <img src="assets/img/aida-images/review-person.png" alt="">
+                                    <div>
+                                        <h4>Miranda H. Halim</h4>
+                                        <span>Restaurant Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ad-single-review">
+                                <div class="d-flex gap-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    On the other hand, we denounce with righteous indignation and dislike men
+                                    <br class="d-none d-md-block">
+                                    who are so beguiled and demoralized by the charms of pleasure of the
+                                    <br class="d-none d-md-block">
+                                    moment, so blinded by desire, that they cannot foresee the pain and trouble
+                                    <br class="d-none d-md-block">
+                                    that are bound to ensue
+                                </p>
+                                <div class="ad-review-person-container">
+                                    <img src="assets/img/aida-images/review-person.png" alt="">
+                                    <div>
+                                        <h4>Miranda H. Halim</h4>
+                                        <span>Restaurant Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item ad-single-review">
+                                <div class="d-flex gap-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    On the other hand, we denounce with righteous indignation and dislike men
+                                    <br class="d-none d-md-block">
+                                    who are so beguiled and demoralized by the charms of pleasure of the
+                                    <br class="d-none d-md-block">
+                                    moment, so blinded by desire, that they cannot foresee the pain and trouble
+                                    <br class="d-none d-md-block">
+                                    that are bound to ensue
+                                </p>
+                                <div class="ad-review-person-container">
+                                    <img src="assets/img/aida-images/review-person.png" alt="">
+                                    <div>
+                                        <h4>Miranda H. Halim</h4>
+                                        <span>Restaurant Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-----------------------
+         Blog & Article 
+      ---------------------->
+    <section data-aos="fade-up">
+        <div class="ad-article">
+            <div class="ad-article-title-container">
+                <img src="assets/img/aida-images/service-icon.png" alt="">
+                <h4>Blog & Articles</h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus asperiores
+                    <br class="d-none d-md-block">
+                    necessitatibus, porro quis animi doloribus quo deleniti
+                </p>
+            </div>
+            <div class="container ad-article-container">
+                <div class="ad-single-card">
+                    <a href="singel-post.html">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                    <div class="overflow-hidden">
+                        <a href="singel-post.html">
+                            <img src="assets/img/aida-images/article-image1.png" class="ad-blog-image" alt="">
+                        </a>
+                    </div>
+                    <p>RECIPESM . 25, 2023</p>
+                    <a href="singel-post.html">
+                        <h4>Appetizers to Start Your Romantic
+                            <br class="d-block d-md-none"> Date with
+                        </h4>
+                    </a>
+                </div>
+                <div class="ad-single-card">
+                    <a href="singel-post.html">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                    <div class="overflow-hidden">
+                        <a href="singel-post.html">
+                            <img src="assets/img/aida-images/article-image2.png" class="ad-blog-image" alt="">
+                        </a>
+                    </div>
+                    <p>RECIPESM . 25, 2023</p>
+                    <a href="singel-post.html">
+                        <h4>Appetizers to Start Your Romantic
+                            <br class="d-block d-md-none"> Date with
+                        </h4>
+                    </a>
+                </div>
+                <div class="ad-single-card">
+                    <a href="singel-post.html">
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                    <div class="overflow-hidden">
+                        <a href="singel-post.html">
+                            <img src="assets/img/aida-images/article-image3.png" class="ad-blog-image" alt="">
+                        </a>
+                    </div>
+                    <p>RECIPESM . 25, 2023</p>
+                    <a href="singel-post.html">
+                        <h4>Appetizers to Start Your Romantic
+                            <br class="d-block d-md-none"> Date with
+                        </h4>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-----------------------
+        Footer 
+---------------------->
+<footer data-aos="fade-up">
+    <div class="ad-footer position-relative">
+        <div class="container">
+            <div class="ad-footer-subscribe">
+                <h4>Our Newsletter Now</h4>
+                <div class="position-relative">
+                    <input type="text" placeholder="Your Email Address">
+                    <a href="#">
+                        <button>Subscribe</button>
+                    </a>
+                </div>
+            </div>
+            <div class="ad-footer-border"></div>
+            <div class="ad-footer-list-container row align-items-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
+                    <a href="index.html">
+                        <img src="assets/img/logo/logo-white.png" alt="">
+                    </a>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>
+                            4920 Trails End Road Ft United
+                            <br>
+                            States, FL 33311
+                        </p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <p>
+                            nfo@example.com
+                            <br>
+                            test@example.com
+                        </p>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <div>
+                            <a href="tel:+123 456 679 123">
+                                +123 456 679 123
+                            </a>
+                            <br>
+                            <a href="tel:+123 456 789">
+                                +123 456 789
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
+                    <h5>Our Services</h5>
+                    <ul>
+                        <li>
+                            <a href="about.html">
+                                Fast Delivery
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">Vegan Cuisine</a>
+                        </li>
+                        <li>
+                            <a href="about.html">
+                                Fresh Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">Skilled Chefs</a>
+                        </li>
+                        <li>
+                            <a href="about.html">Great Coffee</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li>
+                            <a href="about-2.html">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">
+                                Testimonials
+                            </a>
+                        </li>
+                        <li>
+                            <a href="team.html">
+                                Our Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blog.html">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact-2.html">
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
+                    <h5>Opening Hours</h5>
+                    <ul>
+                        <li>
+                            Mon -
+                            <span class="ad-footer-list-opening-timer">from 8am to 9pm</span>
+                        </li>
+                        <li>
+                            Saturday -
+                            <span class="ad-footer-list-opening-timer">from 9am to 4pm</span>
+                        </li>
+                        <li>
+                            Sunday -
+                            <span class="ad-footer-list-opening-timer">from 8am to 9pm</span>
+                        </li>
+                        <li>
+                            Mon -
+                            <span class="ad-footer-list-opening-timer">from 9am to 4pm</span>
+                        </li>
+                        <li>
+                            Saturday -
+                            <span class="ad-footer-list-opening-timer">from 8am to 9pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ad-footer-bottom">
+            <p>Codebasket © 2023. All Rights Reserved.</p>
+            <img src="assets/img/aida-images/payment.png" alt="">
+        </div>
+    </div>
+</footer>
+<!-- Script -->
+<script src="assets/js/fslightbox/fslightbox.js"></script>
+<script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<!-- Aos Animation -->
+<script src="assets/js/animation/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+<!-- GSAP Effect-->
+<script src="../../../../cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="../../../../cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+let bannerContainers = document.querySelectorAll(".ad-banner-person");
+let aboutContainers = document.querySelectorAll(".ad-about-image-container");
+
+bannerContainers.forEach((container) => {
+  let image = container.querySelector("img");
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      toggleActions: "restart none none reset"
+    }
+  });
+
+  tl.set(container, { autoAlpha: 1 });
+  tl.from(container, 1.5, {
+    xPercent: -100,
+    ease: Power2.out
+  });
+  tl.from(image, 1.5, {
+    xPercent: 100,
+    scale: 1.3,
+    delay: -1.5,
+    ease: Power2.out
+  });
+});
+aboutContainers.forEach((container) => {
+  let image = container.querySelector("img");
+  let tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      toggleActions: "restart none none reset"
+    }
+  });
+
+  tl.set(container, { autoAlpha: 1 });
+  tl.from(container, 1.5, {
+    xPercent: -100,
+    ease: Power2.out
+  });
+  tl.from(image, 1.5, {
+    xPercent: 100,
+    scale: 1.3,
+    delay: -1.5,
+    ease: Power2.out
+  });
+});
+</script>
+<!-- Preloader -->
+<script src="assets/js/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    setTimeout(function() {
+    $('#container').addClass('loaded');
+    if ($('#container').hasClass('loaded')) {
+
+    $('#preloader').delay(2000).queue(function() {
+     $(this).remove();
+    });}
+    }, 2000);});
+</script>
+
+
+</body>
+</html>

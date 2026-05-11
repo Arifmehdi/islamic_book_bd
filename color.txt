@@ -1,0 +1,38 @@
+Primary Color
+
+Deep Purple
+#5B1E5D
+
+Use for: navbar, buttons, headings, footer
+Gives a bold and premium feel
+Secondary Color
+
+Mint Green
+#8BCB7A
+
+Use for: highlights, hover effects, icons, sections
+Adds freshness and balance
+Supporting Colors
+
+Cream / Off White
+#F4E8C8
+
+Backgrounds and content areas
+
+Dark Green
+#2E6B3A
+
+Text accents or secondary buttons
+Suggested Website Palette
+Purpose	Color	Hex
+Primary	Purple	#5B1E5D
+Secondary	Mint Green	#8BCB7A
+Accent	Dark Green	#2E6B3A
+Background	Cream	#F4E8C8
+Text	Charcoal	#2B2B2B
+Quick UI Recommendation
+Header/Footer → Purple
+CTA Buttons → Green
+Background → Cream/White
+Text → Dark charcoal
+Hover Effects → Dark green
