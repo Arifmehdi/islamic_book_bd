@@ -30,6 +30,79 @@
     .cartQtyDisplay {
         color: #000 !important;
     }
+
+    /* Category Slider Modern UI */
+    .category-area {
+        background-color: #f9f9f9;
+    }
+    .single-category {
+        transition: all 0.3s ease;
+        padding: 20px 10px;
+        background: #fff;
+        border-radius: 15px;
+        margin: 10px 5px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .single-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .category-img {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #fff;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        transition: all 0.5s ease;
+    }
+    .single-category:hover .category-img {
+        border-color: #5B1E5D;
+    }
+    .category-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+    .single-category:hover .category-img img {
+        transform: scale(1.1);
+    }
+    .category-info h5 {
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+    .single-category:hover .category-info h5 {
+        color: #5B1E5D;
+    }
+    .category-active .owl-nav div {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: #5B1E5D !important;
+        color: #fff !important;
+        border-radius: 50%;
+        line-height: 40px;
+        text-align: center;
+        font-size: 20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+    .category-active:hover .owl-nav div {
+        opacity: 1;
+    }
+    .category-active .owl-nav .owl-prev {
+        left: -20px;
+    }
+    .category-active .owl-nav .owl-next {
+        right: -20px;
+    }
 </style>
 @endpush
 
@@ -56,8 +129,41 @@
     </div>
     <!-- slider-area-end -->
 
+    <!-- category-area-start -->
+    <div class="category-area pt-80 pb-50 pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb-50">
+                        <h2>Top Categories</h2>
+                        <p>Explore our collection by categories</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="category-active owl-carousel">
+                        @foreach($categories as $category)
+                        @if($category->active == 1)
+                        <div class="single-category text-center">
+                            <a href="{{ route('productCategory', $category->slug) }}">
+                                <div class="category-img mb-15">
+                                    <img src="{{ route('imagecache', ['template' => 'medium', 'filename' => $category->fi()]) }}" alt="{{ $category->name_en }}">
+                                </div>
+                                <div class="category-info">
+                                    <h5>{{ $category->name_en }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- category-area-end -->
+
     <!-- banner-area-6-start -->
-    <div class="banner-area-6 pt-40">
+    {{--<div class="banner-area-6 pt-40">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-12">
@@ -85,7 +191,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!-- banner-area-6-end -->
 
     <!-- product-area-start -->
@@ -218,7 +324,7 @@
     <!-- testimonial-area-end -->
 
     <!-- product-area-4-start -->
-    <div class="product-area-4 pb-100">
+    <div class="product-area-4 pb-100 pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -301,11 +407,8 @@
                     <div class="link-follow">
                         <ul>
                             <li><a href="{{ $ws->twitter_link ?? '#' }}"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="{{ $ws->google_link ?? '#' }}"><i class="fab fa-google-plus-g"></i></a></li>
                             <li><a href="{{ $ws->facebook_link ?? '#' }}"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="{{ $ws->youtube_link ?? '#' }}"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="{{ $ws->flickr_link ?? '#' }}"><i class="fab fa-flickr"></i></a></li>
-                            <li><a href="{{ $ws->vimeo_link ?? '#' }}"><i class="fab fa-vimeo-v"></i></a></li>
                             <li><a href="{{ $ws->instagram_link ?? '#' }}"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
@@ -329,6 +432,34 @@ $(document).ready(function() {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // Category Slider Initialization
+    $('.category-active').owlCarousel({
+        smartSpeed: 1000,
+        nav: true,
+        autoplay: true,
+        dots: false,
+        loop: true,
+        margin: 20,
+        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+        responsive: {
+            0: {
+                items: 2
+            },
+            480: {
+                items: 3
+            },
+            768: {
+                items: 4
+            },
+            992: {
+                items: 5
+            },
+            1200: {
+                items: 6
+            }
         }
     });
 
