@@ -52,7 +52,11 @@
                                         @guest
                                             <li><a href="{{ route('register') }}">My account </a></li>
                                         @else
-                                            <li><a href="{{ route('user.dashboard') }}">My account </a></li>
+                                            @if(auth()->user()->hasRole('admin'))
+                                                <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                            @else
+                                                <li><a href="{{ route('user.dashboard') }}">My account </a></li>
+                                            @endif
                                         @endguest
                                     </ul>
                                 </div>

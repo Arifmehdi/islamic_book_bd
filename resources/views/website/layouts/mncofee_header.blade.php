@@ -30,7 +30,12 @@
                     <div class="account-area text-end">
                         <ul>
                             @auth
-                                <li><a href="{{ route('user.dashboard') }}">My Account</a></li>
+                                @if(auth()->user()->hasRole('admin'))
+                                    <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                    <li><a href="{{ route('user.dashboard') }}">Member Dashboard</a></li>
+                                @else
+                                    <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                                @endif
                                 <li><a href="{{ route('logout') }}">Logout</a></li>
                             @else
                                 <li><a href="{{ route('login') }}">Sign in</a></li>

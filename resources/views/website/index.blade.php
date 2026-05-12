@@ -395,8 +395,10 @@
                             <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
                         <div class="twitter-text">
-                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum notare quam</p>
-                            <a href="#">koparion</a>
+                            <p>
+                                ইসলামিক বই বিডি-তে পাবেন কুরআন, হাদিস, তাফসির, ইসলামিক ইতিহাস, শিশুদের ইসলামিক বইসহ বিভিন্ন ধরনের নির্ভরযোগ্য ইসলামিক বইয়ের বিশাল সংগ্রহ।
+                            </p>
+                            <a href="#">Islamic Book BD</a>
                         </div>
                     </div>
                 </div>
@@ -406,10 +408,10 @@
                     </div>
                     <div class="link-follow">
                         <ul>
-                            <li><a href="{{ $ws->twitter_link ?? '#' }}"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="{{ $ws->facebook_link ?? '#' }}"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="{{ $ws->youtube_link ?? '#' }}"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="{{ $ws->instagram_link ?? '#' }}"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="{{ $ws->twitter_link ?? '#' }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{{ $ws->facebook_link ?? '#' }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{{ $ws->youtube_link ?? '#' }}" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="{{ $ws->instagram_link ?? '#' }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -417,12 +419,6 @@
         </div>
     </div>
     <!-- social-group-area-end -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
-        {{-- Modal content can be dynamic or static --}}
-    </div>
-    <!-- Modal end -->
 @endsection
 
 @push('js')

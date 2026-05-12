@@ -4,7 +4,12 @@
             <img src="{{ route('imagecache', ['template' => 'large', 'filename' => $product->fi()]) }}" alt="{{ $product->name_en }}" class="primary" />
         </a>
         <div class="quick-view">
-            <a class="action-view" href="#" data-bs-target="#productModal" data-bs-toggle="modal" title="Quick View">
+            <a class="action-view" href="javascript:void(0)" 
+               data-bs-target="#productModal" 
+               data-bs-toggle="modal" 
+               data-id="{{ $product->id }}"
+               data-url="{{ route('quick.view') }}"
+               title="Quick View">
                 <i class="fa fa-search-plus"></i>
             </a>
         </div>
@@ -33,9 +38,9 @@
         <div class="product-price">
             <ul>
                 <li>৳{{ number_format($product->selling_price, 2) }}</li>
-                @if($product->discount_price)
+                {{--@if($product->discount_price)
                     <li class="old-price">৳{{ number_format($product->price, 2) }}</li>
-                @endif
+                @endif--}}
             </ul>
         </div>
     </div>

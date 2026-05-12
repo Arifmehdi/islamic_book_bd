@@ -95,23 +95,23 @@ class FrontendController extends Controller
         $data['sale_products'] = Product::whereActive(true)
             ->whereNotNull('discount_price')
             ->latest()
-            ->limit(3)
+            ->limit(10)
             ->get();
 
         $data['latest_products'] = Product::whereActive(true)
             ->latest()
-            ->limit(3)
+            ->limit(10)
             ->get();
 
         $data['best_products'] = Product::whereActive(true)
             ->where('feature', true)
             ->latest()
-            ->limit(3)
+            ->limit(10)
             ->get();
 
         $data['popular_products'] = Product::whereActive(true)
             ->orderByDesc('click_count')
-            ->limit(3)
+            ->limit(10)
             ->get();
 
         $data['content'] = \App\Models\PageContent::where('page_slug', 'home')->first();
@@ -154,8 +154,12 @@ class FrontendController extends Controller
         if ($request->has('price')) {
             $priceRange = explode('-', $request->get('price'));
             if (count($priceRange) == 2) {
-                $query->whereBetween('final_price', [$priceRange[0], $priceRange[1]]);
+                $query->whereBetween('selling_price', [$priceRange[0], $priceRange[1]]);
             }
+        } elseif ($request->has('min_p') || $request->has('max_p')) {
+            $min = $request->get('min_p', 0);
+            $max = $request->get('max_p', 1000000);
+            $query->whereBetween('selling_price', [$min, $max]);
         }
 
         // Sorting
@@ -164,9 +168,9 @@ class FrontendController extends Controller
         } elseif ($request->get('sort') == 2) {
             $query->oldest();
         } elseif ($request->get('sort') == 3) {
-            $query->orderBy('final_price', 'desc');
+            $query->orderBy('selling_price', 'desc');
         } elseif ($request->get('sort') == 4) {
-            $query->orderBy('final_price', 'asc');
+            $query->orderBy('selling_price', 'asc');
         } else {
             $query->latest();
         }
@@ -254,7 +258,7 @@ class FrontendController extends Controller
 
         return response()->json([
             'name'        => $product->name_en,
-            'price'       => number_format($product->final_price, 2),
+            'price'       => number_format($product->selling_price, 2),
             'old_price'   => $product->discount > 0 ? number_format($product->price, 2) : null,
             'description' => Str::limit($product->description_en, 150),
             'image'       => route('imagecache', ['template' => 'pnism', 'filename' => $product->fi()])
@@ -651,9 +655,9 @@ class FrontendController extends Controller
         } elseif ($request->get('sort') == 2) {
             $query->oldest();
         } elseif ($request->get('sort') == 3) {
-            $query->orderBy('final_price', 'desc');
+            $query->orderBy('selling_price', 'desc');
         } elseif ($request->get('sort') == 4) {
-            $query->orderBy('final_price', 'asc');
+            $query->orderBy('selling_price', 'asc');
         } else {
             $query->latest();
         }
@@ -751,10 +755,10 @@ class FrontendController extends Controller
                 $query->oldest();
                 break;
             case 3:
-                $query->orderBy('final_price', 'desc');
+                $query->orderBy('selling_price', 'desc');
                 break;
             case 4:
-                $query->orderBy('final_price', 'asc');
+                $query->orderBy('selling_price', 'asc');
                 break;
             default:
                 $query->latest();
@@ -765,8 +769,12 @@ class FrontendController extends Controller
         if ($request->has('price')) {
             $priceRange = explode('-', $request->get('price'));
             if (count($priceRange) == 2) {
-                $query->whereBetween('final_price', [$priceRange[0], $priceRange[1]]);
+                $query->whereBetween('selling_price', [$priceRange[0], $priceRange[1]]);
             }
+        } elseif ($request->has('min_p') || $request->has('max_p')) {
+            $min = $request->get('min_p', 0);
+            $max = $request->get('max_p', 1000000);
+            $query->whereBetween('selling_price', [$min, $max]);
         }
 
         // Top clicked products
@@ -870,7 +878,7 @@ class FrontendController extends Controller
 
         // Calculate totals
         $cartSubtotal = $cartItems->sum(function ($item) {
-            return $item->quantity * $item->product->final_price;
+            return $item->quantity * $item->product->selling_price;
         });
 
         return view('website.cart', compact('cartItems', 'cartSubtotal'));
@@ -928,7 +936,7 @@ class FrontendController extends Controller
                 ->get();
 
             $cartSubtotal = $cartItems->sum(function($item) {
-                return $item->quantity * $item->product->final_price;
+                return $item->quantity * $item->product->selling_price;
             });
 
             return response()->json([
@@ -1068,8 +1076,8 @@ public function quickAdd(Request $request)
         'message' => $product->name_en . ' added to cart successfully!',
         'id'      => $product->id,
         'name'    => $product->name_en,
-        'price'   => $product->final_price,
-        'image'   => route('imagecache', ['template' => 'pnism', 'filename' => $product->fi()])
+        'price'   => $product->selling_price,
+        'image'   => route('imagecache', ['template' => 'pnism', 'filename' => $product->file])
     ]);
 }
 
