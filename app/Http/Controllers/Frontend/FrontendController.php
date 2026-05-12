@@ -216,6 +216,38 @@ class FrontendController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        $parameter = $request->get('parameter');
+        $query = Product::whereActive(true);
+
+        if ($parameter) {
+            $query->where(function($q) use ($parameter) {
+                $q->where('name_en', 'like', '%' . $parameter . '%')
+                  ->orWhere('name_bn', 'like', '%' . $parameter . '%')
+                  ->orWhere('description_en', 'like', '%' . $parameter . '%')
+                  ->orWhere('description_bn', 'like', '%' . $parameter . '%')
+                  ->orWhere('sku', 'like', '%' . $parameter . '%');
+            });
+        }
+
+        $products = $query->paginate(12)->appends($request->all());
+
+        $productCategories = ProductCategory::whereNull('parent_id')
+            ->with('children')
+            ->where('active', 1)
+            ->orderBy('name_en')
+            ->get();
+        
+        $topClickedProducts = Product::where('active', true)
+            ->where('feature', true)
+            ->orderByDesc('click_count')
+            ->limit(6)
+            ->get();
+
+        return view('website.search', compact('products', 'parameter', 'productCategories', 'topClickedProducts'));
+    }
+
     public function quickView(Request $request)
     {
         $product = Product::with('categories')->findOrFail($request->id);

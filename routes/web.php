@@ -21,8 +21,10 @@ use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\WebsiteParameterController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\PageContentController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Frontend\FrontendController;
 
 // use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\WishlistController;
@@ -346,6 +348,34 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
         'update' => 'admin.page_contents.update',
         'destroy' => 'admin.page_contents.destroy',
     ]);
+});
+
+
+Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'mypanel'], function () {
+    Route::get('dashboard',[AuthController::class,'dashboard'])->name('user.dashboard');
+    Route::get('edit/my/information',[AuthController::class,'editMyInformation'])->name('user.editMyInformation');
+    Route::get('idcard',[AuthController::class,'idcard'])->name('user.idcard');
+    Route::get('idcard/pdf', [AuthController::class, 'idcardPdf'])->name('user.idcard.pdf');
+    Route::post('change/my/information',[AuthController::class,'changeMyInformation'])->name('user.changeMyInformation');
+    Route::post('profile-image/upload',[AuthController::class,'uploadProfileImage'])->name('user.uploadProfileImage');
+    Route::get('orders/type/{type}',[AuthController::class,'orders'])->name('user.orders');
+    
+    Route::get('checkout',[FrontendController::class, 'checkout'])->name('checkout');
+    // Route::get('new/checkout',[FrontendController::class, 'new_checkout'])->name('new.checkout');
+    // Route::post('cod/order/store',[FrontendController::class, 'codOrderStore'])->name('codOrderStore');
+    Route::post('delivery/location/save',[FrontendController::class, 'storeDeliveryLocation'])->name('storeDeliveryLocation');
+
+    Route::post('reviews/store',[FrontendController::class, 'reviewsStore'])->name('reviewsStore');
+    Route::get('invoice/print/{order}', [FrontendController::class, 'orderPrint'])->name('user.orderPrint');
+
+    Route::get('chalan/print/{order}', [FrontendController::class, 'orderChalan'])->name('user.orderChalan');
+
+    Route::get('feature-products', [AuthController::class, 'featureProducts'])->name('user.feature_products');
+
+    // Product Stock Requests
+    Route::get('stock-requests', [\App\Http\Controllers\AuthController::class, 'stockRequests'])->name('user.stock_requests.index');
+    Route::get('stock-requests/create', [\App\Http\Controllers\AuthController::class, 'createStockRequestForm'])->name('user.stock_requests.create');
+    Route::post('stock-requests', [\App\Http\Controllers\ProductStockRequestController::class, 'store'])->name('user.stock_requests.store');
 });
 
 Route::middleware(['auth', 'retailer'])->prefix('retailer')->group(function () {

@@ -1,384 +1,166 @@
-@extends('website.layouts.master')
+@extends('website.layouts.mncofee')
 
-@section('title', 'News - '. env('APP_NAME') )
+@section('title', 'Blog - '. ($ws->name ?? env('APP_NAME')))
 
 @section('meta')
-<meta name="description"
-    content="Contact North Bengal for inquiries, product details, or business queries. Get in touch via phone, email, or visit our office.">
-<meta name="keywords" content="contact north bengal, contact us, north bengal inquiries, phone, email, office location">
-<meta property="og:title" content="Contact Us - North Bengal">
-<meta property="og:description" content="Reach North Bengal for product inquiries or business partnerships.">
-<meta property="og:image" content="{{ asset('frontend/assets/img/northbengal/contact_banner.png') }}">
-<meta property="og:type" content="website">
+<meta name="description" content="Stay updated with the latest news and articles from {{ $ws->name ?? env('APP_NAME') }}.">
+<meta name="keywords" content="Blog, Islamic Books, News, Articles">
 @endsection
+
+@push('css')
+<style>
+    .breadcrumbs-area {
+        background: #f7f7f7;
+        padding: 30px 0;
+    }
+    .breadcrumbs-menu ul li {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+    }
+    .breadcrumbs-menu ul li::before {
+        content: "/";
+        position: absolute;
+        right: -13px;
+        top: 0;
+    }
+    .breadcrumbs-menu ul li:last-child::before {
+        display: none;
+    }
+    .breadcrumbs-menu ul li a {
+        color: #333;
+        text-transform: capitalize;
+    }
+    .breadcrumbs-menu ul li a.active {
+        color: #5B1E5D;
+    }
+    .pagination-wrapper .pagination {
+        justify-content: center;
+    }
+</style>
+@endpush
+
 @section('content')
-<!-- BREADCRUMB AREA START -->
-<x-breadcrumb title="News" pageName="News" bgImage="frontend/img/bg/9.jpg" />
-<!-- BREADCRUMB AREA END -->
-
-<!-- BLOG AREA START -->
-<div class="ltn__blog-area mb-120">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="ltn__blog-list-wrap">
-                    <!-- Blog Item -->
-                    @forelse($news as $post)
-                    <div class="ltn__blog-item ltn__blog-item-5">
-                        <div class="ltn__blog-img">
-                            <a href="{{ route('singleNews', ['id' => $post->id]) }}">
-                                <img src="{{ route('imagecache', ['template'=>'cpmd','filename' => $post->fi()]) }}" alt="{{$post->title}}">
-                            </a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">{{ $post->category->name }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="{{ route('singleNews', ['id' => $post->id]) }}">{{ $post->title }}</a></h3>
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <!-- <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li> -->
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>{{ $post->created_at->format('M d Y') }}
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>{{ \Illuminate\Support\Str::limit($post->excerpt, 300, '...') }}</p>
-                            <div class="ltn__blog-meta-btn">
-                                <div class="ltn__blog-meta">
-                                    <ul>
-                                        <li class="ltn__blog-author">
-                                            <a href="#"><img src="{{ asset('frontend/img/blog/author.jpg') }}"
-                                                    alt="Author image">By: Ethan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ltn__blog-btn">
-                                    <a href="{{ route('singleNews', ['id' => $post->id]) }}"><i class="fas fa-arrow-right"></i>Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @empty 
-                    <p>There no blog here </p>
-                    @endforelse
-                    <!-- Blog Item (Video) -->
-                    {{--<div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-video">
-                        <div class="ltn__video-img">
-                            <img src="{{ asset('frontend/img/blog/32.jpg') }}" alt="video popup bg image">
-                            <a class="ltn__video-icon-2 ltn__secondary-bg ltn__video-icon-2-border---"
-                                href="https://www.youtube.com/embed/X7R-q9rsrtU?autoplay=1&amp;showinfo=0"
-                                data-rel="lightcase:myCollection">
-                                <i class="fa fa-play"></i>
-                            </a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">Business</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="blog-details.html">Adipisicing elit, sed do eiusmod
-                                    tempor
-                                    incididunt ut labore et dolore.</a></h3>
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint</p>
-                            <div class="ltn__blog-meta-btn">
-                                <div class="ltn__blog-meta">
-                                    <ul>
-                                        <li class="ltn__blog-author">
-                                            <a href="#"><img src="{{ asset('frontend/img/blog/author.jpg') }}"
-                                                    alt="#">By: Ethan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ltn__blog-btn">
-                                    <a href="blog-details.html"><i class="fas fa-arrow-right"></i>Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
-                    <!-- Blog Item (Gallery) -->
-                    {{--<div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-gallery">
-                        <div class="ltn__blog-gallery-active slick-arrow-1 slick-arrow-1-inner">
-                            <div class="ltn__blog-gallery-item">
-                                <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/33.jpg') }}"
-                                        alt="Image"></a>
-                            </div>
-                            <div class="ltn__blog-gallery-item">
-                                <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/34.jpg') }}"
-                                        alt="Image"></a>
-                            </div>
-                            <div class="ltn__blog-gallery-item">
-                                <a href="blog-details.html"><img src="{{ asset('frontend/img/blog/31.jpg') }}"
-                                        alt="Image"></a>
-                            </div>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">Business</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="blog-details.html">Magna aliqua. Ut enim ad minim venia
-                                    m, quis nostrud exercitation ullamco</a></h3>
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint</p>
-                            <div class="ltn__blog-meta-btn">
-                                <div class="ltn__blog-meta">
-                                    <ul>
-                                        <li class="ltn__blog-author">
-                                            <a href="#"><img src="{{ asset('frontend/img/blog/author.jpg') }}"
-                                                    alt="#">By: Ethan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ltn__blog-btn">
-                                    <a href="blog-details.html"><i class="fas fa-arrow-right"></i>Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
-                    <!-- Blog Item (Audio) -->
-                    {{--<div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-audio">
-                        <div class="post-audio embed-responsive embed-responsive-16by9">
-                            <iframe
-                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/837045328&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe>
-
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">Business</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="blog-details.html">Laboris nisi ut aliquip ex ea
-                                    commodo
-                                    consequat. Duis aute irure dolor.</a></h3>
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint</p>
-                            <div class="ltn__blog-meta-btn">
-                                <div class="ltn__blog-meta">
-                                    <ul>
-                                        <li class="ltn__blog-author">
-                                            <a href="#"><img src="{{ asset('frontend/img/blog/author.jpg') }}"
-                                                    alt="#">By: Ethan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ltn__blog-btn">
-                                    <a href="blog-details.html"><i class="fas fa-arrow-right"></i>Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
-                    <!-- Blog Item (No Image) -->
-                    {{--<div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-no-image">
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">Business</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="blog-details.html">In reprehenderit in voluptate velit
-                                    esse
-                                    cillum dolore eu fugiat nulla pariatur.</a></h3>
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint</p>
-                            <div class="ltn__blog-meta-btn">
-                                <div class="ltn__blog-meta">
-                                    <ul>
-                                        <li class="ltn__blog-author">
-                                            <a href="#"><img src="{{ asset('frontend/img/blog/author.jpg') }}"
-                                                    alt="#">By: Ethan</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="ltn__blog-btn">
-                                    <a href="blog-details.html"><i class="fas fa-arrow-right"></i>Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--}}
-                    <!-- Blog Item (Background Image) -->
-                    {{--<div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-bg-image bg-image bg-overlay-white-90"
-                        data-bg="{{ asset('frontend/img/blog/2.jpg') }}">
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-category">
-                                        <a href="#">Business</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title"><a href="blog-details.html">Culpa qui officia deserunt mollit
-                                    anim
-                                    id est laborum. Sed ut perspiciatis</a></h3>
-                            <div class="ltn__blog-meta mb-0">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>--}}
-                    <!--  -->
-                    <!-- Blog Item (Quote) -->
-                    <div class="ltn__blog-item ltn__blog-item-5 ltn__blog-item-quote bg-image bg-overlay-theme-90"
-                        data-bg="{{ asset('frontend/img/blog/3.jpg') }}">
-                        <div class="ltn__blog-brief">
-                            <blockquote>
-                                <a href="blog-details.html">Excepteur sint occaecat cupida
-                                    tat non proident, sunt in.</a>
-                            </blockquote>
-                            <div class="ltn__blog-meta mb-0">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="far fa-eye"></i>232 Views</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="far fa-comments"></i>35 Comments</a>
-                                    </li>
-                                    <li class="ltn__blog-date">
-                                        <i class="far fa-calendar-alt"></i>June 22, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ltn__pagination-area text-center">
-                            <div class="ltn__pagination">
-                                {{-- Laravel Pagination Links --}}
-                                {{ $news->links('vendor.pagination.bootstrap-4') }}
-                            </div>
-                        </div>
+    <!-- breadcrumbs-area-start -->
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="#" class="active">blog</a></li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <aside class="sidebar-area blog-sidebar ltn__right-sidebar">
-                    <!-- Author Widget -->
-                    <x-blog-author />
-
-                    <!-- Search Widget -->
-                    <x-blog-search />
-
-                    <!-- Menu Widget (Category) -->
-                    <x-blog-category />
-
-                    <!-- Popular Post Widget -->
-                    <x-blog-popular />
-
-                    <!-- Social Media Widget -->
-                     <div class="widget ltn__social-media-widget">
-                        <h4 class="ltn__widget-title ltn__widget-title-border">Never Miss News</h4>
-                        <div class="ltn__social-media-2">
-                            <x-blog-media />
-                        </div>
-                    </div>
-
-                    <!-- Tagcloud Widget -->
-                    <x-blog-tag /> 
-
-                    <!-- Banner Widget -->
-                    <x-blog-banner />
-
-                </aside>
             </div>
         </div>
     </div>
-</div>
-<!-- BLOG AREA END -->
+    <!-- breadcrumbs-area-end -->
+
+    <!-- blog-main-area-start -->
+    <div class="blog-main-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2">
+                    <div class="blog-left-sidebar mrg-sm-blog">
+                        <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="side-form">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input type="text" name="parameter" placeholder="Search..." />
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                        {{-- <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Recent Posts</h3>
+                            </div>
+                            <div class="blog-side-menu">
+                                <ul>
+                                    @foreach(App\Models\BlogPost::whereActive(true)->whereStatus('published')->latest()->take(5)->get() as $recent)
+                                        <li><a href="{{ route('singleNews', $recent->id) }}">{{ $recent->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div> --}}
+                        <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="catagory-menu" id="cate-toggle">
+                                <ul>
+                                    @foreach(App\Models\BlogCategory::withCount('posts')->get() as $cat)
+                                        <li><a href="{{ route('categoryPosts', $cat->id) }}">{{ $cat->name }} ({{ $cat->posts_count }})</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
+                    <div class="blog-main-wrapper">
+                        @forelse($news as $post)
+                        <div class="single-blog-post mb-40">
+                            <div class="author-destils mb-30">
+                                <div class="author-left">
+                                    <div class="author-img">
+                                        <a href="#"><img src="{{ asset('ebook/img/author/1.jpg') }}" alt="author" /></a>
+                                    </div>
+                                    <div class="author-description">
+                                        <p>Posted by: 
+                                            <a href="#"><span>{{ $post->author->name ?? 'Admin' }}</span></a>
+                                            in <a href="#">{{ $post->category->name ?? 'Uncategorized' }}</a>
+                                        </p>
+                                        <span>{{ $post->created_at->format('M d Y') }}</span>
+                                    </div>
+                                </div>
+                                <div class="author-right">
+                                    <span>Share this:</span>
+                                    <ul>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-img mb-30">
+                                <a href="{{ route('singleNews', $post->id) }}">
+                                    <img src="{{ route('imagecache', ['template' => 'large', 'filename' => $post->fi()]) }}" alt="{{ $post->title }}" />
+                                </a>
+                            </div>
+                            <div class="single-blog-content">
+                                <div class="single-blog-title">
+                                    <h3><a href="{{ route('singleNews', $post->id) }}">{{ $post->title }}</a></h3>
+                                </div>
+                                <div class="blog-single-content">
+                                    <p>{{ Str::limit(strip_tags($post->description), 250) }}</p>
+                                </div>
+                            </div>
+                            <div class="blog-comment-readmore">
+                                <div class="blog-readmore">
+                                    <a href="{{ route('singleNews', $post->id) }}">Read more<i class="fas fa-long-arrow-alt-right"></i></a>
+                                </div>
+                                <div class="blog-com">
+                                    <a href="#">{{ $post->view_count }} views</a>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                            <p>No blog posts found.</p>
+                        @endforelse
+
+                        <div class="pagination-wrapper mt-40">
+                            {{ $news->links() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- blog-main-area-end -->
 @endsection

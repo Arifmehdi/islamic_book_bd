@@ -1,201 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@yield('title', $ws->name ?? 'Cafeu')</title>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        @yield('meta')
-        <link rel="shortcut icon" type="image/png" href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}">
-        <link rel="stylesheet" href="{{ asset('mncofee/assets/css/bootstrap/bootstrap.min.css') }}">
-        <link rel="preconnect" href="https://fonts.googleapis.com/">
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&amp;family=Jost&amp;family=Nunito&amp;family=Oswald:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('mncofee/assets/font-awesome/all.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('mncofee/assets/css/animation/aos.css') }}">
-        <link rel="stylesheet" href="{{ asset('mncofee/assets/css/aida-home-styles.css') }}">
-        <style>
-            :root {
-                --primary-color: #5B1E5D; /* Deep Purple */
-                --secondary-color: #8BCB7A; /* Mint Green */
-                --accent-color: #2E6B3A; /* Dark Green */
-                --bg-cream: #F4E8C8; /* Cream */
-                --text-charcoal: #2B2B2B; /* Charcoal */
-            }
+<!doctype html>
+<html class="no-js" lang="en">
 
-            body {
-                background-color: var(--bg-cream);
-                color: var(--text-charcoal);
-                font-family: 'Jost', sans-serif;
-            }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@yield('title', $ws->name ?? 'Islamic Book BD')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('meta')
 
-            /* Header & Navbar */
-            header {
-                background-color: #ffffff !important;
-                border-bottom: 3px solid var(--primary-color);
-            }
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}">
 
-            .ad-nav-anchor, .ad-header-pages-container a {
-                color: var(--text-charcoal) !important;
-            }
+    <!-- all css here -->
+    <!-- bootstrap v3.3.6 css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/bootstrap.min.css') }}">
+    <!-- animate css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/animate.css') }}">
+    <!-- meanmenu css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/meanmenu.min.css') }}">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/owl.carousel.css') }}">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/font-awesome.min.css') }}">
+    <!-- flexslider.css-->
+    <link rel="stylesheet" href="{{ asset('ebook/css/flexslider.css') }}">
+    <!-- chosen.min.css-->
+    <link rel="stylesheet" href="{{ asset('ebook/css/chosen.min.css') }}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{{ asset('ebook/style.css') }}">
+    <!-- responsive css -->
+    <link rel="stylesheet" href="{{ asset('ebook/css/responsive.css') }}">
+    <!-- modernizr css -->
+    <script src="{{ asset('ebook/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    
+    <style>
+        :root {
+            --primary-color: #5B1E5D;
+            --secondary-color: #8BCB7A;
+            --accent-color: #2E6B3A;
+            --bg-cream: #F4E8C8;
+            --text-charcoal: #2B2B2B;
+        }
+    </style>
 
-            .ad-nav-anchor:hover, .ad-header-pages-container a:hover {
-                color: var(--primary-color) !important;
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-            .ad-header-pages-container button, 
-            .ad-responsive-btn button,
-            .navbar-offcanvas-search button,
-            .ad-footer-subscribe button {
-                background-color: var(--primary-color) !important;
-                color: #fff !important;
-                border-radius: 5px !important;
-                transition: 0.3s ease;
-            }
+    @stack('css')
+</head>
 
-            .ad-header-pages-container button:hover, 
-            .ad-responsive-btn button:hover,
-            .navbar-offcanvas-search button:hover,
-            .ad-footer-subscribe button:hover {
-                background-color: var(--accent-color) !important;
-            }
+<body class="home-6">
+    @include('website.layouts.mncofee_header')
 
-            .ad-cart-count {
-                background-color: var(--secondary-color) !important;
-                color: var(--primary-color) !important;
-                font-weight: bold;
-            }
+    <main>
+        @yield('content')
+    </main>
 
-            .ad-search-icon:hover, .ad-header-menubar:hover {
-                background-color: var(--secondary-color) !important;
-                color: var(--primary-color) !important;
-            }
+    @include('website.layouts.mncofee_footer')
 
-            /* Footer */
-            .ad-footer {
-                background-color: var(--primary-color) !important;
-                background-image: none !important;
-                color: #ffffff !important;
-            }
-
-            .ad-footer h4, .ad-footer h5 {
-                color: var(--secondary-color) !important;
-            }
-
-            .ad-footer p, .ad-footer a {
-                color: #f8f9fa !important;
-            }
-
-            .ad-footer a:hover {
-                color: var(--secondary-color) !important;
-            }
-
-            .ad-footer-border {
-                border-top: 1px solid rgba(255,255,255,0.1) !important;
-            }
-
-            .ad-footer-bottom {
-                background-color: #451647 !important; /* Slightly darker purple */
-            }
-
-            /* Forms */
-            input:focus {
-                border-color: var(--primary-color) !important;
-                box-shadow: 0 0 0 0.2rem rgba(91, 30, 93, 0.25) !important;
-            }
-
-            /* Preloader */
-            .container-preloader .animation-preloader .spinner {
-                border-top-color: var(--primary-color) !important;
-            }
-
-            /* Selection */
-            ::selection {
-                background: var(--secondary-color);
-                color: var(--primary-color);
-            }
-
-            main {
-                min-height: 70vh;
-            }
-        </style>
-        @stack('css')
-    </head>
-    <body>
-        <div id="preloader">
-            <div id="container" class="container-preloader">
-                <div class="animation-preloader">
-                    <div class="spinner"></div>
-                </div>
-                <div class="loader-section section-left"></div>
-                <div class="loader-section section-right"></div>
-            </div>
-        </div>
-
-        @include('website.layouts.mncofee_header')
-
-        <main>
-            @yield('content')
-        </main>
-
-        @include('website.layouts.mncofee_footer')
-
-        <!-- Script -->
-        <script src="{{ asset('mncofee/assets/js/fslightbox/fslightbox.js') }}"></script>
-        <script src="{{ asset('mncofee/assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('mncofee/assets/js/jquery.nice-select.min.js') }}"></script>
-        
-        <!-- Aos Animation -->
-        <script src="{{ asset('mncofee/assets/js/animation/aos.js') }}"></script>
-
-        <!-- GSAP Effect-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-        <!-- Preloader & Init -->
-        <script src="{{ asset('mncofee/assets/js/jquery/jquery.min.js') }}"></script>
-        <script>
-            $(document).ready(function() {
-                // GSAP Animations
-                gsap.registerPlugin(ScrollTrigger);
-                let bannerContainers = document.querySelectorAll(".ad-banner-person");
-                let aboutContainers = document.querySelectorAll(".ad-about-image-container");
-
-                const animateGSAP = (containers) => {
-                    containers.forEach((container) => {
-                        let image = container.querySelector("img");
-                        let tl = gsap.timeline({
-                            scrollTrigger: {
-                                trigger: container,
-                                toggleActions: "restart none none reset"
-                            }
-                        });
-                        tl.set(container, { autoAlpha: 1 });
-                        tl.from(container, 1.5, { xPercent: -100, ease: "power2.out" });
-                        tl.from(image, 1.5, { xPercent: 100, scale: 1.3, delay: -1.5, ease: "power2.out" });
-                    });
-                };
-                animateGSAP(bannerContainers);
-                animateGSAP(aboutContainers);
-
-                // Preloader Removal
-                setTimeout(function() {
-                    $('#container').addClass('loaded');
-                    if ($('#container').hasClass('loaded')) {
-                        $('#preloader').delay(500).queue(function() {
-                            $(this).remove();
-                            // Initialize AOS after preloader is gone
-                            if (typeof AOS !== 'undefined') {
-                                AOS.init({
-                                    duration: 800,
-                                    once: true
-                                });
-                            }
-                        });
-                    }
-                }, 500);
-            });
-        </script>
-        @stack('js')
-    </body>
+    <!-- all js here -->
+    <!-- jquery latest version -->
+    <script src="{{ asset('ebook/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <!-- bootstrap js -->
+    <script src="{{ asset('ebook/js/bootstrap.min.js') }}"></script>
+    <!-- owl.carousel js -->
+    <script src="{{ asset('ebook/js/owl.carousel.min.js') }}"></script>
+    <!-- meanmenu js -->
+    <script src="{{ asset('ebook/js/jquery.meanmenu.js') }}"></script>
+    <!-- wow js -->
+    <script src="{{ asset('ebook/js/wow.min.js') }}"></script>
+    <!-- jquery.parallax-1.1.3.js -->
+    <script src="{{ asset('ebook/js/jquery.parallax-1.1.3.js') }}"></script>
+    <!-- jquery.countdown.min.js -->
+    <script src="{{ asset('ebook/js/jquery.countdown.min.js') }}"></script>
+    <!-- jquery.flexslider.js -->
+    <script src="{{ asset('ebook/js/jquery.flexslider.js') }}"></script>
+    <!-- chosen.jquery.min.js -->
+    <script src="{{ asset('ebook/js/chosen.jquery.min.js') }}"></script>
+    <!-- jquery.counterup.min.js -->
+    <script src="{{ asset('ebook/js/jquery.counterup.min.js') }}"></script>
+    <!-- waypoints.min.js -->
+    <script src="{{ asset('ebook/js/waypoints.min.js') }}"></script>
+    <!-- plugins js -->
+    <script src="{{ asset('ebook/js/plugins.js') }}"></script>
+    <!-- main js -->
+    <script src="{{ asset('ebook/js/main.js') }}"></script>
+    @stack('js')
+</body>
 </html>

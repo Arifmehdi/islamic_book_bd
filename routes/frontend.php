@@ -121,9 +121,9 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/service',[FrontendController::class,'service'])->name('service');
 // Route::get('/product',[HomeController::class,'product'])->name('product');
 
-Route::get('agent/dashboard',[FrontendController::class, 'memberDashboard'])->name('agent.dashboard');
-Route::get('patient/dashboard',[FrontendController::class, 'patientDashboard'])->name('patient.dashboard');
-Route::get('doctor/dashboard',[FrontendController::class, 'doctorDashboard'])->name('doctor.dashboard');
+// Route::get('agent/dashboard',[FrontendController::class, 'memberDashboard'])->name('agent.dashboard');
+// Route::get('patient/dashboard',[FrontendController::class, 'patientDashboard'])->name('patient.dashboard');
+// Route::get('doctor/dashboard',[FrontendController::class, 'doctorDashboard'])->name('doctor.dashboard');
 
 Route::get('category/{category}/posts',[FrontendController::class,'categoryPosts'])->name('categoryPosts');
 

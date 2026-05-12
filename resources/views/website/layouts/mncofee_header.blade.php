@@ -1,214 +1,158 @@
-<header style="position: sticky; top: 0; z-index: 1050; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <!---------------
-    Navbar 
--------------->
-    <nav>
-        <div class="ad-navbar-sm d-flex justify-content-between align-items-center d-lg-none">
-            <div>
-                <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo_alt()]) }}" alt="{{ $ws->name }}" style="max-height: 50px;">
-            </div>
-            <div
-                class="ad-responsive-menubar"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasTop"
-                aria-controls="offcanvasTop"
-            >
-                <i class="fa-thin fa-bars-sort"></i>
-            </div>
-        </div>
-        <div class=" d-none d-lg-block">
-            <div class="ad-header-container">
-                <div class="ad-header-menu-container">
-                    <div class="d-flex gap-3">
-                        <div
-                            class="ad-search-icon"
-                            type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasTopSearch"
-                            aria-controls="offcanvasTopSearch"
-                        >
-                            <i class="fa-light fa-magnifying-glass"></i>
-                        </div>
-                        <div
-                            class="offcanvas offcanvas-top navbar-offcanvas-lg"
-                            tabindex="-1"
-                            id="offcanvasTopSearch"
-                            aria-labelledby="offcanvasTopLabel"
-                        >
-                            <div class="offcanvas-header">
-                                <h5 id="offcanvasTopLabel"></h5>
-                                <div class="ad-responsive-close-btn">
-                                    <button
-                                        type="button"
-                                        class="btn-close text-reset"
-                                        data-bs-dismiss="offcanvas"
-                                        aria-label="Close"
-                                    ></button>
+<!-- header-area-start -->
+<header>
+    <!-- header-top-area-start -->
+    <div class="header-top-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    {{--<div class="language-area">
+                        <ul>
+                            <li><img src="{{ asset('ebook/img/flag/1.jpg') }}" alt="flag" /><a href="#">English<i class="fas fa-angle-down"></i></a>
+                                <div class="header-sub">
+                                    <ul>
+                                        <li><a href="#"><img src="{{ asset('ebook/img/flag/2.jpg') }}" alt="flag" />france</a></li>
+                                        <li><a href="#"><img src="{{ asset('ebook/img/flag/3.jpg') }}" alt="flag" />croatia</a></li>
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="offcanvas-body navbar-offcanvas-search">
-                                <form action="{{ route('search') }}" method="GET">
-                                    <input
-                                        type="text"
-                                        name="parameter"
-                                        placeholder="Search Islamic Books..."
-                                    >
-                                    <br>
-                                    <button type="submit">Search</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="ad-navlist">
-                        <li >
-                            <a href="{{ route('home') }}" class="ad-nav-anchor">Home</a>
-                        </li>
-                        <li >
-                            <a href="{{ route('about') }}" class="ad-nav-anchor">About Us</a>
-                        </li>
-                        <li >
-                            <a href="{{ route('shop') }}" class="ad-nav-anchor">All Books</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('service') }}" class="ad-nav-anchor">Our Mission</a>
-                            <div class="grad-nav-border">
-                                <div class="left-nav-border"></div>
-                                <div class="right-nav-border"></div>
-                            </div>
-                        </li>
-                    </nav>
-                </div>
-                <div class="ad-logo">
-                    <a href="{{ route('home') }}">
-                        <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo_alt()]) }}" alt="{{ $ws->name }}" style="max-height: 80px;">
-                    </a>
-                </div>
-                <div class="ad-header-pages-container">
-                    <li class="dropdown">
-                        <a href="{{ route('image.galleries') }}" class="ad-nav-anchor">Gallery</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="{{ route('contact') }}" class="ad-nav-anchor">Contact</a>
-                    </li>
-                    <div class="d-flex gap-3 align-items-center">
-                        <div class="ad-header-cart-container">
-                            <a href="{{ route('new.checkout') }}" class="text-decoration-none">
-                                <div class="ad-cart-img-container">
-                                    <i class="fa-light fa-cart-shopping"></i>
-                                    <span class="ad-cart-count cartCount">{{ App\Models\Cart::cartCount() }}</span>
+                            </li>
+                            <li><a href="#">USD $<i class="fas fa-angle-down"></i></a>
+                                <div class="header-sub dolor">
+                                    <ul>
+                                        <li><a href="#">EUR €</a></li>
+                                        <li><a href="#">USD $</a></li>
+                                    </ul>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="ad-header-cart-container dropdown">
+                            </li>
+                        </ul>
+                    </div>--}}
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="account-area text-end">
+                        <ul>
                             @auth
-                                <a href="#" class="text-decoration-none" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div class="ad-cart-img-container" style="color: var(--primary-color); border-color: var(--primary-color);">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg" aria-labelledby="userDropdown" style="border-radius: 12px; margin-top: 10px; min-width: 180px;">
-                                    <li class="px-4 py-2 border-bottom mb-2 bg-light">
-                                        <small class="text-muted d-block" style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Logged in as</small>
-                                        <strong class="text-dark">{{ auth()->user()->name }}</strong>
-                                    </li>
-                                    @if(auth()->user()->role == 'admin')
-                                        <li><a class="dropdown-item py-2 px-4" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt me-2" style="width: 20px;"></i> Admin Dashboard</a></li>
-                                    @endif
-                                    <li><a class="dropdown-item py-2 px-4" href="{{ route('user.dashboard') }}"><i class="fas fa-user-circle me-2" style="width: 20px;"></i> Member Dashboard</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item py-2 px-4 text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt me-2" style="width: 20px;"></i> Logout</a></li>
-                                </ul>
+                                <li><a href="{{ route('user.dashboard') }}">My Account</a></li>
+                                <li><a href="{{ route('logout') }}">Logout</a></li>
                             @else
-                                <a href="{{ route('login') }}" class="text-decoration-none">
-                                    <div class="ad-cart-img-container">
-                                        <i class="fa-solid fa-user"></i>
-                                    </div>
-                                </a>
+                                <li><a href="{{ route('login') }}">Sign in</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
                             @endauth
-                        </div>
-                        <div class="fs-5">
-                            <a href="{{ route('service') }}">
-                                <button>Our Mission</button>
-                            </a>
-                        </div>
+                            <li><a href="{{ route('new.checkout') }}">Checkout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div
-            class="offcanvas offcanvas-top h-100 ad-responsive-navbar"
-            tabindex="-1"
-            id="offcanvasTop"
-            aria-labelledby="offcanvasTopLabel"
-        >
-            <div class="d-flex align-items-center justify-content-between mt-3 mx-3">
-                <a href="{{ route('home') }}">
-                    <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo_alt()]) }}" alt="{{ $ws->name }}" style="max-height: 50px;">
-                </a>
-                <div class="ad-responsive-close-btn">
-                    <button
-                        type="button"
-                        class="btn-close text-reset"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                    ></button>
+    </div>
+    <!-- header-top-area-end -->
+    <!-- header-mid-area-start -->
+    <div class="header-mid-area ptb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5 col-12">
+                    <div class="header-search">
+                        <form action="{{ route('search') }}" method="GET" id="header-search-form">
+                            <input type="text" name="parameter" placeholder="Search entire store here..." />
+                            <a href="javascript:void(0)" onclick="document.getElementById('header-search-form').submit();"><i class="fas fa-search"></i></a>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="ad-responsive-navbar-list">
-                    <li>
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('about') }}">About Us</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('shop') }}">All Books</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('service') }}">
-                            <p>Our Mission</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('image.galleries') }}">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('contact') }}">Contact</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('login') }}">Login</a>
-                    </li>
-                </ul>
-                <div class="ad-responsive-search position-relative">
-                    <form action="{{ route('search') }}" method="GET">
-                        <input type="text" name="parameter" placeholder="Search Islamic Books...">
-                        <button type="submit" style="background: transparent; border: none; position: absolute; right: 10px; top: 10px;">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="d-flex gap-4 mt-4 text-center ad-responsive-account">
-                    <div>
-                        <a href="{{ route('change.profile') }}" class="text-decoration-none" style="color: inherit;">
-                            <i class="fa-solid fa-user"></i>
-                            <p>Account</p>
+                <div class="col-lg-6 col-md-4 col-12">
+                    <div class="logo-area text-center logo-xs-mrg">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo_alt()]) }}" alt="{{ $ws->name }}" style="max-height: 80px;" />
                         </a>
                     </div>
-                    <div class="position-relative">
-                        <a href="{{ route('new.checkout') }}" class="text-decoration-none" style="color: inherit;">
-                            <i class="fa-light fa-cart-shopping"></i>
-                            <span>{{ App\Models\Cart::cartCount() }}</span>
-                            <p>View Cart</p>
-                        </a>
-                    </div>
-                    <div class="fs-5 ad-responsive-btn text-center">
-                        <a href="{{ route('service') }}">
-                            <button>Our Mission</button>
-                        </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-12">
+                    <div class="my-cart">
+                        <ul>
+                            <li>
+                                <a href="{{ route('new.checkout') }}"><i class="fas fa-shopping-cart"></i>My Cart</a>
+                                <span class="cartCount">{{ App\Models\Cart::cartCount() }}</span>
+                                {{-- Mini cart can be added here following sample structure if needed --}}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+    <!-- header-mid-area-end -->
+    <!-- main-menu-area-start -->
+    <div class="main-menu-area d-md-none d-none d-lg-block" id="header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="menu-center-wrap">
+                        <div class="menu-area">
+                            <nav>
+                                <ul>
+                                    <li class="{{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('shop') }}">Books<i class="fas fa-angle-down"></i></a>
+                                        <div class="mega-menu">
+                                            @foreach($productCategories->chunk(4) as $chunk)
+                                                @foreach($chunk as $category)
+                                                <span>
+                                                    <a href="{{ route('productCategory', $category->slug) }}" class="title">{{ $category->name_en }}</a>
+                                                    @foreach($category->children as $child)
+                                                        <a href="{{ route('productCategory', $child->slug) }}">{{ $child->name_en }}</a>
+                                                    @endforeach
+                                                </span>
+                                                @endforeach
+                                            @endforeach
+                                        </div>
+                                    </li>
+                                    {{--<li class="{{ request()->routeIs('shop') ? 'active' : '' }}"><a href="{{ route('shop') }}">Shop</a></li>--}}
+                                    <li class="{{ request()->routeIs('news') ? 'active' : '' }}"><a href="{{ route('news') }}">Blog</a></li>
+                                    <li class="{{ request()->routeIs('about') ? 'active' : '' }}"><a href="{{ route('about') }}">About Us</a></li>
+                                    <li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        {{--<div class="safe-area">
+                            <a href="{{ route('shop') }}">sales off</a>
+                        </div>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- main-menu-area-end -->
+    <!-- mobile-menu-area-start -->
+    <div class="mobile-menu-area d-lg-none d-block fix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul id="nav">
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li><a href="{{ route('shop') }}">Books</a>
+                                    <ul>
+                                        @foreach($productCategories as $category)
+                                            <li><a href="{{ route('productCategory', $category->slug) }}">{{ $category->name_en }}</a>
+                                                @if($category->children->count() > 0)
+                                                    <ul>
+                                                        @foreach($category->children as $child)
+                                                            <li><a href="{{ route('productCategory', $child->slug) }}">{{ $child->name_en }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                {{--<li><a href="{{ route('shop') }}">Shop</a></li>--}}
+                                <li><a href="{{ route('news') }}">Blog</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ route('contact') }}">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- mobile-menu-area-end -->
 </header>
+<!-- header-area-end -->

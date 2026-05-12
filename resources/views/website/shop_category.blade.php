@@ -2,241 +2,172 @@
 
 @section('title', (isset($category) ? $category->name_en : 'Shop') . ' - ' . ($ws->name ?? env('APP_NAME')))
 
+@section('meta')
+<meta name="description" content="Browse {{ isset($category) ? $category->name_en : 'books' }} in our Islamic book store.">
+<meta name="keywords" content="{{ isset($category) ? $category->name_en : 'Islamic Books' }}, Shop, Quran, Hadith">
+@endsection
+
 @push('css')
 <style>
-    .ad-menu-banner {
-        background-image: url("{{ asset('mncofee/assets/img/aida-images/menu-banner.png') }}") !important;
-        background-size: cover;
-        background-position: center;
-        height: 300px;
+    .breadcrumbs-area {
+        background: #f7f7f7;
+        padding: 30px 0;
     }
-    .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .breadcrumbs-menu ul li {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
     }
-    .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    .breadcrumbs-menu ul li::before {
+        content: "/";
+        position: absolute;
+        right: -13px;
+        top: 0;
     }
-    .product-card-img {
-        overflow: hidden;
-        border-radius: 1rem;
-        background: #fff;
+    .breadcrumbs-menu ul li:last-child::before {
+        display: none;
     }
-    .product-card-img img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-    .product-card-img:hover img {
-        transform: scale(1.03);
-    }
-    .sidebar {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.05);
-    }
-    .nav-list .nav-link {
+    .breadcrumbs-menu ul li a {
         color: #333;
-        padding: 8px 0;
-        border-bottom: 1px solid #f1f1f1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        text-transform: capitalize;
     }
-    .nav-list .nav-link:hover, .nav-list .nav-link.active {
-        color: var(--primary-color);
+    .breadcrumbs-menu ul li a.active {
+        color: #5B1E5D;
     }
-    .btn-primary-custom {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        color: #fff;
+    .pagination-wrapper .pagination {
+        justify-content: center;
     }
-    .btn-primary-custom:hover {
-        background-color: #a8854d;
-        border-color: #a8854d;
-        color: #fff;
-    }
-    .parent-category[aria-expanded="true"] i {
-        transform: rotate(180deg);
+    .single-most-product bd mb-18 {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 18px;
     }
 </style>
 @endpush
 
 @section('content')
-<!--------------- 
-    Banner 
----------------->
-<section>
-    <div class="ad-menu-banner position-relative">
-        <div class="ad-menu-banner-overlay">
-            <div>
-                <a href="{{ route('home') }}">Home /</a>
-                <a class="selected-page" href="{{ route('shop') }}"> Shop</a>
-                @if(isset($category))
-                    <span class="text-white"> / {{ $category->name_en }}</span>
-                @endif
+    <!-- breadcrumbs-area-start -->
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('shop') }}">shop</a></li>
+                            @if(isset($category))
+                                <li><a href="#" class="active">{{ $category->name_en }}</a></li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- breadcrumbs-area-end -->
 
-<section class="section my-0 py-5">
-    <div class="container">
-        <div class="row g-4">
-            
-            <!-- Sidebar -->
-            <div class="col-lg-3 order-2 order-lg-1 d-none d-lg-block">
-                <aside class="sidebar">
-                    <h5 class="mb-4">Product Categories</h5>
-
-                    <ul class="nav nav-list flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link {{ !request()->segment(2) ? 'active' : '' }}" href="{{ route('shop') }}">
-                                <span>All Products</span>
-                            </a>
-                        </li>
-
-                        @foreach ($allRootCategories as $rootCat)
-                            @php
-                                $isActiveParent = request()->segment(2) === $rootCat->slug ||
-                                                  ($rootCat->children->isNotEmpty() && $rootCat->children->pluck('slug')->contains(request()->segment(2)));
-                            @endphp
-                            <li class="nav-item">
-                                <a class="nav-link parent-category {{ $isActiveParent ? 'active' : '' }}"
-                                   href="{{ count($rootCat->children) > 0 ? '#category-' . $rootCat->id : route('productCategory', $rootCat->slug) }}"
-                                   @if(count($rootCat->children) > 0) data-bs-toggle="collapse" data-bs-target="#category-{{ $rootCat->id }}" aria-expanded="{{ $isActiveParent ? 'true' : 'false' }}" @endif>
-                                    <span>{{ $rootCat->name_en }} </span>
-                                    @if(count($rootCat->children) > 0)
-                                        <i class="fas fa-chevron-down small transition"></i>
-                                    @endif
-                                </a>
-                                @if(count($rootCat->children) > 0)
-                                    <ul id="category-{{ $rootCat->id }}" class="nav flex-column ms-3 collapse {{ $isActiveParent ? 'show' : '' }}">
-                                        @foreach($rootCat->children as $child)
-                                            <li class="nav-item">
-                                                <a class="nav-link {{ request()->segment(2) === $child->slug ? 'active' : '' }}" href="{{ route('productCategory', $child->slug) }}">{{ $child->name_en }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-                            </li>
-                        @endforeach
-                    </ul>
-
-                    <div class="mt-5">
-                        <h5 class="mb-3">Filter by Price</h5>
-                        <form action="{{ url()->current() }}" method="GET">
-                            <div class="d-flex flex-column gap-2">
-                                <input type="number" name="min_price" class="form-control form-control-sm" placeholder="Min Price" value="{{ request('min_price') }}">
-                                <input type="number" name="max_price" class="form-control form-control-sm" placeholder="Max Price" value="{{ request('max_price') }}">
-                                <button type="submit" class="btn btn-sm btn-primary-custom mt-2">Apply</button>
+    <!-- shop-main-area-start -->
+    <div class="shop-main-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2">
+                    <div class="shop-left-sidebar">
+                        <div class="single-shop mb-40">
+                            <div class="left-title-2">
+                                <h2>Categories</h2>
+                            </div>
+                            <div class="shop-menu">
+                                <ul>
+                                    @foreach ($allRootCategories as $rootCat)
+                                        <li class="{{ isset($category) && ($category->id == $rootCat->id || $category->parent_id == $rootCat->id) ? 'active' : '' }}">
+                                            <a href="{{ route('productCategory', $rootCat->slug) }}">{{ $rootCat->name_en }}</a>
+                                            @if($rootCat->children->count() > 0)
+                                                <ul class="ms-3">
+                                                    @foreach($rootCat->children as $child)
+                                                        <li><a href="{{ route('productCategory', $child->slug) }}" style="{{ isset($category) && $category->id == $child->id ? 'color:#5B1E5D; font-weight:bold;' : '' }}">- {{ $child->name_en }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="left-title mb-20">
+                            <h4>Price</h4>
+                        </div>
+                        <div class="left-menu mb-30">
+                            <ul>
+                                <li><a href="{{ url()->current() }}?min_price=0&max_price=99">৳0.00-৳99.99</a></li>
+                                <li><a href="{{ url()->current() }}?min_price=100&max_price=499">৳100.00-৳499.99</a></li>
+                                <li><a href="{{ url()->current() }}?min_price=500&max_price=999">৳500.00-৳999.99</a></li>
+                                <li><a href="{{ url()->current() }}?min_price=1000">৳1000.00-and above</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
+                    <div class="category-image mb-30">
+                        <a href="#"><img src="{{ asset('ebook/img/banner/32.jpg') }}" alt="banner" /></a>
+                    </div>
+                    <div class="section-title-5 mb-30">
+                        <h2>{{ isset($category) ? $category->name_en : 'Products' }}</h2>
+                    </div>
+                    <div class="toolbar mb-30">
+                        <div class="shop-tab">
+                            <div class="tab-3">
+                                <ul class="nav">
+                                    <li><a class="active" href="#th" data-bs-toggle="tab"><i class="fa fa-th-large"></i>Grid</a></li>
+                                </ul>
+                            </div>
+                            <div class="list-page">
+                                <p>Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of {{ $products->total() }} results</p>
+                            </div>
+                        </div>
+                        <form action="{{ url()->current() }}" method="GET" class="d-flex gap-3">
+                            <div class="toolbar-sorter">
+                                <span>Sort By</span>
+                                <select name="sort" class="sorter-options" onchange="this.form.submit()">
+                                    <option value="1" @if(request()->get('sort')==1) selected @endif>Latest</option>
+                                    <option value="2" @if(request()->get('sort')==2) selected @endif>Oldest</option>
+                                    <option value="3" @if(request()->get('sort')==3) selected @endif>Price: High to Low</option>
+                                    <option value="4" @if(request()->get('sort')==4) selected @endif>Price: Low to High</option>
+                                </select>
                             </div>
                         </form>
                     </div>
-                </aside>
-            </div>
-
-            <!-- Main Content -->
-            <div class="col-12 col-lg-9 order-1 order-lg-2">
-                
-                <!-- Subcategories horizontally on mobile -->
-                @if(count($subcategories) > 0)
-                <div class="d-lg-none mb-4">
-                    <div class="d-flex overflow-auto pb-2 gap-2">
-                        @foreach ($subcategories as $subcat)
-                            <a href="{{ route('productCategory', $subcat->slug) }}" 
-                               class="btn btn-sm btn-outline-primary rounded-pill text-nowrap {{ request()->segment(2) == $subcat->slug ? 'active' : '' }}">
-                                {{ $subcat->name_en }}
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
-
-
-                <!-- Top filter section -->
-                <div class="row mb-4 align-items-center bg-light p-3 rounded mx-0 border">
-                    <div class="col-md-6">
-                        <form method="GET" class="d-flex align-items-center gap-2">
-                            <select name="sort" id="sort" class="form-select form-select-sm w-auto" onchange="this.form.submit()">
-                                <option value="1" @if(request()->get('sort')==1) selected @endif>Latest</option>
-                                <option value="2" @if(request()->get('sort')==2) selected @endif>Oldest</option>
-                                <option value="3" @if(request()->get('sort')==3) selected @endif>Price: High to Low</option>
-                                <option value="4" @if(request()->get('sort')==4) selected @endif>Price: Low to High</option>
-                            </select>
-                            <input type="hidden" name="min_price" value="{{ request()->get('min_price') }}">
-                            <input type="hidden" name="max_price" value="{{ request()->get('max_price') }}">
-                        </form>
-                    </div>
-                    <div class="col-md-6 text-md-end">
-                        <span class="text-muted small">
-                            Showing {{ $products->firstItem() }} - {{ $products->lastItem() }} of {{ $products->total() }} results
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="row g-3">
-                    @forelse ($products as $product)
-                        <div class="col-6 col-md-4 col-lg-4">
-                            <div class="card h-100 border-0 shadow-sm card-hover">
-                                <div class="position-relative overflow-hidden text-center p-2 product-card-img">
-                                    <a href="{{ route('productDetails', $product->slug) }}">
-                                        <img src="{{ route('imagecache', ['template' => 'pnimd', 'filename' => $product->fi()]) }}" 
-                                             class="card-img-top" 
-                                             alt="{{ $product->name_en }}">
-                                    </a>
-                                </div>
-                                <div class="card-body p-3 d-flex flex-column text-center">
-                                    <small class="text-uppercase text-muted mb-1" style="font-size: 10px;">
-                                        @foreach ($product->categories as $cat)
-                                            {{ $cat->name_en }}@if(!$loop->last), @endif
-                                        @endforeach
-                                    </small>
-                                    <h6 class="card-title text-truncate mb-1" style="font-size: 14px;">
-                                        <a href="{{ route('productDetails', $product->slug) }}" class="text-dark text-decoration-none">
-                                            {{ strtoupper($product->name_en) }}
-                                        </a>
-                                    </h6>
-                                    <div class="mb-2">
-                                        {{--@if($product->discount > 0)
-                                            <span class="text-muted text-decoration-line-through small me-1" style="font-size: 11px;">
-                                                ৳{{ number_format($product->price, 2) }}
-                                            </span>
-                                        @endif--}}
-                                        <span class="fw-bold text-primary" style="font-size: 14px; color: var(--primary-color) !important;">
-                                            ৳{{ number_format($product->selling_price, 2) }}
-                                        </span>
+                    <!-- tab-area-start -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="th">
+                            <div class="row">
+                                @forelse ($products as $product)
+                                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                                        @include('frontend.home.includes.product_item', ['product' => $product, 'class' => 'mb-40'])
                                     </div>
-                                    <div class="mt-auto productCartItem" data-product="{{ $product->id }}">
-                                        @include('frontend.home.includes.productCartItem')
+                                @empty
+                                    <div class="col-12 text-center py-5">
+                                        <p class="text-muted">No products found in this category.</p>
                                     </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
-                    @empty
-                        <div class="col-12 text-center py-5">
-                            <p class="text-muted">No products found in this category.</p>
-                        </div>
-                    @endforelse
+                    </div>
+                    <!-- tab-area-end -->
+                    <!-- pagination-area-start -->
+                    <div class="pagination-wrapper mt-40">
+                        {{ $products->appends(request()->query())->links() }}
+                    </div>
+                    <!-- pagination-area-end -->
                 </div>
-
-                <!-- Pagination -->
-                <div class="mt-5 d-flex justify-content-center">
-                    {{ $products->links() }}
-                </div>
-
             </div>
         </div>
     </div>
-</section>
+    <!-- shop-main-area-end -->
 @endsection
 
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+$(document).ready(function() {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -248,14 +179,16 @@
         let btn = $(this);
         let url = btn.data("url");
         let product_id = btn.data("product");
-        let qty = parseInt(btn.closest(".productCartItem").find(".product_qty").val()) || 1;
+        let qty = parseInt(btn.closest(".cart-action-wrapper").find(".product_qty").val()) || 1;
 
         $.post(url, { product: product_id, qty: qty }, function (res) {
             if (res.status) {
-                btn.closest(".productCartItem").html(res.productCartItem);
+                $(`.productCartItem[data-product="${product_id}"]`).html(res.productCartItem);
                 $(".cartCount").text(res.cartCount);
                 $(".cartItemsCount").text(res.cartItemsCount);
-                $(".cartTotalPrice").text(res.cartTotal.toFixed(2) + " tk");
+                if(res.cartTotal) {
+                    $(".cartTotalPrice").text(parseFloat(res.cartTotal).toFixed(2) + " tk");
+                }
 
                 Swal.fire({
                     toast: true, icon: "success", title: res.message,
@@ -275,6 +208,7 @@
         let cartId = $btn.data('cart');
         let url = $btn.data('url');
         let $wrapper = $btn.closest('.cart-action-wrapper');
+        let product_id = $wrapper.data('product');
         let qty = parseInt($wrapper.find('.cartQtyDisplay').text()) || 0;
 
         if ($btn.hasClass('plus')) {
@@ -296,13 +230,18 @@
             success: function (res) {
                 if (res.status) {
                     if (qty === 0) {
-                        $wrapper.html(`
-                            <input type="hidden" name="product_qty" value="1" class="product_qty">
-                            <button class="btn btn-outline-primary w-100 btn-sm addToCart"
-                                data-url="${res.add_to_cart_url}"
-                                data-product="${res.product_id}">
-                                Buy Now
-                            </button>
+                        $wrapper.closest(".productCartItem").html(`
+                            <div class="cart-action-wrapper" data-product="${product_id}">
+                                <div class="add-to-cart-initial-btn">
+                                    <button class="btn btn-primary btn-sm rounded-pill w-100 addToCart" 
+                                            data-url="${res.add_to_cart_url}"
+                                            data-product="${product_id}"
+                                            style="height: 38px; background-color: #5B1E5D; border-color: #5B1E5D;">
+                                        Buy Now
+                                    </button>
+                                    <input type="hidden" name="product_qty" value="1" class="product_qty">
+                                </div>
+                            </div>
                         `);
                     } else {
                         $wrapper.find('.cartQtyDisplay').text(qty);
@@ -310,6 +249,9 @@
 
                     $('.cartCount').text(res.cartCount);
                     $('.cartItemsCount').text(res.cartItemsCount);
+                    if(res.cartTotal) {
+                        $(".cartTotalPrice").text(parseFloat(res.cartTotal).toFixed(2) + " tk");
+                    }
                 }
             },
             error: function () {
@@ -320,5 +262,6 @@
             }
         });
     });
+});
 </script>
 @endpush

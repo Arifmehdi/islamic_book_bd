@@ -1,305 +1,187 @@
 @extends('website.layouts.mncofee')
 
-@section('title', $news->title . ' - ' . ($ws->name ?? env('APP_NAME')))
+@section('title', $news->title . ' - '. ($ws->name ?? env('APP_NAME')))
 
 @section('meta')
 <meta name="description" content="{{ Str::limit(strip_tags($news->description), 160) }}">
-<meta name="keywords" content="{{ $news->category->name_en ?? 'blog, coffee, news' }}">
-<meta property="og:title" content="{{ $news->title }}">
-<meta property="og:description" content="{{ Str::limit(strip_tags($news->description), 160) }}">
-<meta property="og:image" content="{{ route('imagecache', ['template' => 'original', 'filename' => $news->fi()]) }}">
-<meta property="og:type" content="article">
+<meta name="keywords" content="{{ $news->meta_keywords ?? 'Blog, Islamic Books, News' }}">
 @endsection
 
 @push('css')
 <style>
-    .ad-blog-banner {
-        background-image: url("{{ asset('mncofee/assets/img/aida-images/menu-banner.png') }}") !important;
-        background-size: cover;
-        background-position: center;
-        height: 300px;
+    .breadcrumbs-area {
+        background: #f7f7f7;
+        padding: 30px 0;
     }
-    .ad-blog-banner-overlay {
-        background: rgba(0, 0, 0, 0.5);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-    }
-    .ad-blog-banner-overlay a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 5px;
-    }
-    .ad-blog-banner-overlay .selected-page {
-        color: var(--primary-color);
-    }
-    .blog-details-content img {
-        width: 100%;
-        border-radius: 15px;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    .blog-meta-single {
-        margin-right: 20px;
-        font-size: 14px;
-        color: #666;
-    }
-    .blog-meta-single i {
-        color: var(--primary-color);
-        margin-right: 5px;
-    }
-    .sidebar-title {
-        position: relative;
-        padding-bottom: 15px;
-        margin-bottom: 25px;
-        font-size: 20px;
-        border-bottom: 2px solid #f1f1f1;
-    }
-    .sidebar-title::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 50px;
-        height: 2px;
-        background: var(--primary-color);
-    }
-    .sidebar-post-single {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .sidebar-post-img img {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 8px;
-    }
-    .sidebar-post-title {
-        font-size: 14px;
-        line-height: 1.4;
-        margin-bottom: 5px;
-    }
-    .sidebar-post-title a {
-        color: #333;
-        font-weight: 600;
-    }
-    .sidebar-post-title a:hover {
-        color: var(--primary-color);
-    }
-    .sidebar-post-date {
-        font-size: 12px;
-        color: #999;
-    }
-    .category-list li {
-        margin-bottom: 12px;
-    }
-    .category-list li a {
-        display: flex;
-        justify-content: space-between;
-        color: #555;
-        transition: 0.3s;
-    }
-    .category-list li a:hover {
-        color: var(--primary-color);
-        padding-left: 5px;
-    }
-    .tag-list a {
+    .breadcrumbs-menu ul li {
         display: inline-block;
-        padding: 6px 15px;
-        background: #f8f9fa;
-        color: #666;
-        border-radius: 5px;
-        margin: 0 5px 10px 0;
-        font-size: 13px;
-        transition: 0.3s;
+        margin-right: 20px;
+        position: relative;
     }
-    .tag-list a:hover {
-        background: var(--primary-color);
-        color: #fff;
+    .breadcrumbs-menu ul li::before {
+        content: "/";
+        position: absolute;
+        right: -13px;
+        top: 0;
     }
-    .related-post-card {
-        border: none;
-        transition: 0.3s;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    .breadcrumbs-menu ul li:last-child::before {
+        display: none;
     }
-    .related-post-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    .breadcrumbs-menu ul li a {
+        color: #333;
+        text-transform: capitalize;
     }
-    .blog-content-area {
-        line-height: 1.8;
-        color: #444;
-        font-size: 16px;
+    .breadcrumbs-menu ul li a.active {
+        color: #5B1E5D;
     }
-    .blog-content-area p {
-        margin-bottom: 20px;
+    .blog-single-content img {
+        max-width: 100%;
+        height: auto;
     }
 </style>
 @endpush
 
 @section('content')
-<!--------------- 
-    Banner 
----------------->
-<section>
-    <div class="ad-blog-banner position-relative">
-        <div class="ad-blog-banner-overlay text-center">
-            <div>
-                <h1 class="text-white mb-3" style="font-family: 'Oswald', sans-serif;">Blog Details</h1>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{{ route('home') }}">Home</a>
-                    <span class="text-white">/</span>
-                    <a class="selected-page" href="{{ route('news') }}"> Blog</a>
+    <!-- breadcrumbs-area-start -->
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('news') }}">blog</a></li>
+                            <li><a href="#" class="active">blog details</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- breadcrumbs-area-end -->
 
-<section class="py-5">
-    <div class="container">
-        <div class="row g-5">
-            <!-- Left Content Area -->
-            <div class="col-lg-8">
-                <article class="blog-details-wrap">
-                    <div class="blog-img mb-4" data-aos="fade-up">
-                        <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $news->fi()]) }}" 
-                             alt="{{ $news->title }}" class="img-fluid rounded-4 shadow-sm w-100">
-                    </div>
-
-                    <div class="blog-meta mb-3" data-aos="fade-up">
-                        <span class="blog-meta-single"><i class="far fa-calendar-alt"></i> {{ $news->created_at->format('d M, Y') }}</span>
-                        <span class="blog-meta-single"><i class="far fa-folder"></i> {{ $news->category->name_en ?? 'General' }}</span>
-                        <span class="blog-meta-single"><i class="far fa-user"></i> Admin</span>
-                    </div>
-
-                    <h2 class="mb-4" style="font-family: 'Oswald', sans-serif; font-size: 32px;" data-aos="fade-up">
-                        {{ $news->title }}
-                    </h2>
-
-                    <div class="blog-content-area mb-5" data-aos="fade-up">
-                        {!! $news->description !!}
-                    </div>
-
-                    <!-- Tags and Share -->
-                    <div class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top border-bottom mb-5" data-aos="fade-up">
-                        <div class="tag-list">
-                            <span class="fw-bold me-2">Tags:</span>
-                            <a href="#">Coffee</a>
-                            <a href="#">Hill Farmers</a>
-                            <a href="#">Specialty</a>
+    <!-- blog-main-area-start -->
+    <div class="blog-main-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2">
+                    <div class="blog-left-sidebar mrg-sm-blog">
+                        <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="side-form">
+                                <form action="{{ route('search') }}" method="GET">
+                                    <input type="text" name="parameter" placeholder="Search..." />
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="social-share d-flex align-items-center gap-3">
-                            <span class="fw-bold">Share:</span>
-                            <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="text-dark"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-dark"><i class="fab fa-linkedin-in"></i></a>
+                        <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="blog-side-menu">
+                                <ul>
+                                    @foreach($newsCategories as $cat)
+                                        <li><a href="{{ route('categoryPosts', $cat->id) }}">{{ $cat->name }} ({{ $cat->posts_count }})</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-blog mb-50">
+                            <div class="blog-left-title">
+                                <h3>Recent Posts</h3>
+                            </div>
+                            <div class="blog-side-menu">
+                                <ul>
+                                    @foreach($latestPosts as $recent)
+                                        <li><a href="{{ route('singleNews', $recent->id) }}">{{ $recent->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Related Posts -->
-                    <div class="related-posts mb-5" data-aos="fade-up">
-                        <h4 class="mb-4" style="font-family: 'Oswald', sans-serif;">Related Posts</h4>
-                        <div class="row g-4">
-                            @forelse($relatedPosts->take(2) as $relate)
-                                <div class="col-md-6">
-                                    <div class="card related-post-card h-100">
-                                        <a href="{{ route('singleNews', ['id' => $relate->id]) }}">
-                                            <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $relate->fi()]) }}" 
-                                                 class="card-img-top" alt="{{ $relate->title }}" style="height: 200px; object-fit: cover;">
-                                        </a>
-                                        <div class="card-body">
-                                            <small class="text-muted d-block mb-2">{{ $relate->created_at->format('M d, Y') }}</small>
-                                            <h5 class="card-title" style="font-size: 16px;">
-                                                <a href="{{ route('singleNews', ['id' => $relate->id]) }}" class="text-dark text-decoration-none">
-                                                    {{ Str::limit($relate->title, 50) }}
-                                                </a>
-                                            </h5>
+                </div>
+                <div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
+                    <div class="blog-main-wrapper">
+                        <div class="author-destils mb-30">
+                            <div class="author-left">
+                                <div class="author-img">
+                                    <a href="#"><img src="{{ asset('ebook/img/author/1.jpg') }}" alt="author" /></a>
+                                </div>
+                                <div class="author-description">
+                                    <p>Posted by:
+                                        <a href="#"><span>{{ $news->author->name ?? 'Admin' }}</span></a>
+                                        in <a href="#">{{ $news->category->name ?? 'Uncategorized' }}</a>
+                                    </p>
+                                    <span>{{ $news->created_at->format('M d Y') }}</span>
+                                </div>
+                            </div>
+                            <div class="author-right">
+                                <span>Share this:</span>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="blog-img mb-30 text-center">
+                            <img src="{{ route('imagecache', ['template' => 'large', 'filename' => $news->fi()]) }}" alt="{{ $news->title }}" />
+                        </div>
+                        <div class="single-blog-content">
+                            <div class="single-blog-title">
+                                <h3>{{ $news->title }}</h3>
+                            </div>
+                            <div class="blog-single-content">
+                                {!! $news->description !!}
+                            </div>
+                        </div>
+                        {{-- Related Posts --}}
+                        @if($relatedPosts->count() > 0)
+                        <div class="related-post mt-50">
+                            <div class="single-blog-title">
+                                <h3>Related Posts</h3>
+                            </div>
+                            <div class="row">
+                                @foreach($relatedProducts ?? [] as $related)
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="single-related-post">
+                                        <div class="related-img">
+                                            <a href="{{ route('singleNews', $related->id) }}">
+                                                <img src="{{ route('imagecache', ['template' => 'medium', 'filename' => $related->fi()]) }}" alt="{{ $related->title }}" />
+                                            </a>
+                                        </div>
+                                        <div class="related-content">
+                                            <h4><a href="{{ route('singleNews', $related->id) }}">{{ $related->title }}</a></h4>
+                                            <span>{{ $related->created_at->format('M d, Y') }}</span>
                                         </div>
                                     </div>
                                 </div>
-                            @empty
-                                <div class="col-12">
-                                    <p class="text-muted small italic">No related posts found.</p>
-                                </div>
-                            @endforelse
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                <aside class="ps-lg-4">
-                    <!-- Search Widget -->
-                    <div class="mb-5" data-aos="fade-up">
-                        <h4 class="sidebar-title">Search</h4>
-                        <form action="#" class="position-relative">
-                            <input type="text" class="form-control py-2 ps-3 pe-5 rounded-pill" placeholder="Search news...">
-                            <button class="btn position-absolute top-50 end-0 translate-middle-y text-primary border-0 bg-transparent pe-3">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Latest Posts -->
-                    <div class="mb-5" data-aos="fade-up">
-                        <h4 class="sidebar-title">Latest Posts</h4>
-                        @foreach($latestPosts->take(4) as $latest)
-                            <div class="sidebar-post-single">
-                                <div class="sidebar-post-img">
-                                    <a href="{{ route('singleNews', ['id' => $latest->id]) }}">
-                                        <img src="{{ route('imagecache', ['template' => 'pnism', 'filename' => $latest->fi()]) }}" alt="{{ $latest->title }}">
-                                    </a>
-                                </div>
-                                <div class="sidebar-post-content">
-                                    <h5 class="sidebar-post-title">
-                                        <a href="{{ route('singleNews', ['id' => $latest->id]) }}" class="text-decoration-none">
-                                            {{ Str::limit($latest->title, 40) }}
-                                        </a>
-                                    </h5>
-                                    <span class="sidebar-post-date">{{ $latest->created_at->format('d M, Y') }}</span>
-                                </div>
+                                @endforeach
                             </div>
-                        @endforeach
-                    </div>
-
-                    <!-- Categories -->
-                    <div class="mb-5" data-aos="fade-up">
-                        <h4 class="sidebar-title">Categories</h4>
-                        <ul class="category-list ps-0">
-                            @foreach($newsCategories as $cat)
-                                <li>
-                                    <a href="#" class="text-decoration-none">
-                                        <span>{{ $cat->name }}</span>
-                                        <span class="text-muted small">({{ $cat->news_count ?? 0 }})</span>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <!-- Tags -->
-                    <div class="mb-5" data-aos="fade-up">
-                        <h4 class="sidebar-title">Popular Tags</h4>
-                        <div class="tag-list">
-                            <a href="#">Coffee</a>
-                            <a href="#">Hill Tracts</a>
-                            <a href="#">Farming</a>
-                            <a href="#">Specialty</a>
-                            <a href="#">Brewing</a>
-                            <a href="#">Roasting</a>
+                        </div>
+                        @endif
+                        
+                        <div class="sharing-post mt-20">
+                            <div class="share-text">
+                                <span>Share this post</span>
+                            </div>
+                            <div class="share-icon">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </aside>
+                </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- blog-main-area-end -->
 @endsection

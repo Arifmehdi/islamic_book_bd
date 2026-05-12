@@ -1,117 +1,115 @@
+<!-- footer-area-start -->
 <footer>
-    <div class="ad-footer position-relative">
+    <!-- footer-top-start -->
+    <div class="footer-top">
         <div class="container">
-            <div class="ad-footer-subscribe">
-                <h4>Our Newsletter Now</h4>
-                <div class="position-relative">
-                    <input type="text" placeholder="Your Email Address">
-                    <a href="#">
-                        <button>Subscribe</button>
-                    </a>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-top-menu bb-2">
+                        <nav>
+                            <ul>
+                                <li><a href="{{ route('home') }}">home</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ route('contact') }}">contact us</a></li>
+                                <li><a href="{{ route('news') }}">blog</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-            <div class="ad-footer-border"></div>
-            <div class="ad-footer-list-container row align-items-center">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
-                    <a href="{{ route('home') }}">
-                        <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo()]) }}" alt="{{ $ws->name }}" style="max-height: 50px;">
-                    </a>
-                    <p class="mt-2" style="color: var(--secondary-color); font-style: italic;">Spreading the Light of Knowledge.</p>
-                    <div class="d-flex gap-3 align-items-center">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p>
-                            {{ $ws->contact_address ?? 'Dhaka, Bangladesh' }}
-                        </p>
-                    </div>
-                    <div class="d-flex gap-3 align-items-center">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                        <p>
-                            {{ $ws->contact_email ?? 'info@islamicbookbd.com' }}
-                        </p>
-                    </div>
-                    <div class="d-flex gap-3 align-items-center">
-                        <i class="fa-solid fa-phone-volume"></i>
-                        <div>
-                            <a href="tel:{{ $ws->contact_phone ?? '+880123456789' }}">
-                                {{ $ws->contact_mobile ?? '+880 123 456 789' }}
-                            </a>
+        </div>
+    </div>
+    <!-- footer-top-start -->
+    <!-- footer-mid-start -->
+    <div class="footer-mid ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-footer br-2 xs-mb">
+                                <div class="footer-title mb-20">
+                                    <h3>Products</h3>
+                                </div>
+                                <div class="footer-mid-menu">
+                                    <ul>
+                                        <li><a href="{{ route('shop') }}">All Books</a></li>
+                                        <li><a href="{{ route('shop') }}">New products</a></li>
+                                        <li><a href="{{ route('shop') }}">Best sales</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-footer br-2 xs-mb">
+                                <div class="footer-title mb-20">
+                                    <h3>Our company</h3>
+                                </div>
+                                <div class="footer-mid-menu">
+                                    <ul>
+                                        <li><a href="{{ route('contact') }}">Contact us</a></li>
+                                        <li><a href="{{ route('about') }}">About Us</a></li>
+                                        @guest
+                                            <li><a href="{{ route('register') }}">My account </a></li>
+                                        @else
+                                            <li><a href="{{ route('user.dashboard') }}">My account </a></li>
+                                        @endguest
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="single-footer br-2 xs-mb">
+                                <div class="footer-title mb-20">
+                                    <h3>Your account</h3>
+                                </div>
+                                <div class="footer-mid-menu">
+                                    <ul>
+                                        <li><a href="{{ route('user.dashboard') }}">Addresses</a></li>
+                                        <li><a href="{{ route('user.dashboard') }}">Orders</a></li>
+                                        <li><a href="{{ route('user.dashboard') }}">Personal info</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
-                    <h5>Our Services</h5>
-                    <ul>
-                        <li>
-                            <a href="{{ route('shop') }}">Authentic Islamic Books</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('shop') }}">Quran & Hadith</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('shop') }}">Islamic Lifestyle</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('shop') }}">Children's Books</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('shop') }}">Home Delivery</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
-                    <h5>Quick Links</h5>
-                    <ul>
-                        <li>
-                            <a href="{{ route('about-us') }}">About Us</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('testimonial') }}">Testimonials</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('shop') }}">Shop</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('news') }}">Blog</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('contact') }}">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-12 ad-footer-list">
-                    <h5>Opening Hours</h5>
-                    <ul>
-                        @if($ws->opening_hours)
-                            @foreach(explode("\n", $ws->opening_hours) as $line)
-                                @if(trim($line))
-                                    <li>{!! $line !!}</li>
-                                @endif
-                            @endforeach
-                        @else
-                            <li>
-                                Mon -
-                                <span class="ad-footer-list-opening-timer">from 8am to 9pm</span>
-                            </li>
-                            <li>
-                                Saturday -
-                                <span class="ad-footer-list-opening-timer">from 9am to 4pm</span>
-                            </li>
-                            <li>
-                                Sunday -
-                                <span class="ad-footer-list-opening-timer">from 8am to 9pm</span>
-                            </li>
-                        @endif
-                    </ul>
+                <div class="col-lg-4 col-12">
+                    <div class="single-footer mrg-sm">
+                        <div class="footer-title mb-20">
+                            <h3>STORE INFORMATION</h3>
+                        </div>
+                        <div class="footer-contact">
+                            <p class="adress">
+                                <span>{{ $ws->name }}</span>
+                                {{ $ws->contact_address }}
+                            </p>
+                            <p><span>Call us now:</span> {{ $ws->contact_phone }}</p>
+                            <p><span>Email:</span> {{ $ws->contact_email }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="ad-footer-bottom">
-        <p>
-            Copyright © {{ date('Y') }}
-            <a href="https://phenexsoft.com/" target="_blank">Phenexsoft IT</a>.
-            All Rights Reserved.
-        </p>
-            <img src="{{ asset('mncofee/assets/img/aida-images/payment.png') }}" alt="payment">
+    </div>
+    <!-- footer-mid-end -->
+    <!-- footer-bottom-start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row bt-2">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="copy-right-area">
+                        <p>&copy; {{ date('Y') }} <strong> {{ $ws->name }} </strong> Powered by <a href="https://phenexsoft.com/" target="_blank"><strong>Phenexsoft IT</strong></a></p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <div class="payment-img text-end">
+                        <a href="#"><img src="{{ asset('ebook/img/1.png') }}" alt="payment" /></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- footer-bottom-end -->
 </footer>
+<!-- footer-area-end -->

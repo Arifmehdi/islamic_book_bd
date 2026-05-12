@@ -1,197 +1,245 @@
 @extends('website.layouts.mncofee')
 
-@section('title', 'About Us - MN Coffee')
+@section('title', 'About Us - '. ($ws->name ?? env('APP_NAME')))
 
 @section('meta')
-<meta name="description" content="Learn about MN Coffee, our mission to build a sustainable local coffee industry, and our vision for Bangladesh specialty coffee.">
-<meta name="keywords" content="MN Coffee, Mission, Vision, Bangladesh Coffee, Specialty Coffee, Bandarban">
+<meta name="description" content="{{ $ws->meta_description ?? 'Learn more about ' . ($ws->name ?? env('APP_NAME')) . '.' }}">
+<meta name="keywords" content="About Us, Islamic Books, Mission, Vision">
 @endsection
 
 @push('css')
 <style>
-    .ad-menu-banner {
-        background-image: url("{{ asset('mncofee/assets/img/aida-images/menu-banner.png') }}") !important;
-        background-size: cover;
-        background-position: center;
+    .breadcrumbs-area {
+        background: #f7f7f7;
+        padding: 30px 0;
     }
-    .mission-vision-card {
-        background: #fdfaf7;
-        border-left: 5px solid var(--primary-color);
-        padding: 30px;
-        margin-bottom: 30px;
-        border-radius: 0 10px 10px 0;
+    .breadcrumbs-menu ul li {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
     }
-    .mission-vision-card h4 {
-        color: var(--primary-color);
-        font-family: 'Oswald', sans-serif;
-        margin-bottom: 15px;
+    .breadcrumbs-menu ul li::before {
+        content: "/";
+        position: absolute;
+        right: -13px;
+        top: 0;
+    }
+    .breadcrumbs-menu ul li:last-child::before {
+        display: none;
+    }
+    .breadcrumbs-menu ul li a {
+        color: #333;
+        text-transform: capitalize;
+    }
+    .breadcrumbs-menu ul li a.active {
+        color: #5B1E5D;
+    }
+    .counter-area {
+        background: #5B1E5D;
+        color: #fff;
+    }
+    .single-counter h2 {
+        color: #fff;
     }
 </style>
 @endpush
 
 @section('content')
-<!--------------- 
-    Banner 
----------------->
-<section>
-    <div class="ad-menu-banner position-relative">
-        <div class="ad-menu-banner-overlay">
-            <div>
-                <a href="{{ route('home') }}">Home /</a>
-                <a class="selected-page" href="{{ route('about-us') }}"> About Us</a>
+    <!-- breadcrumbs-area-start -->
+    <div class="breadcrumbs-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="#" class="active">about</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- breadcrumbs-area-end -->
 
-<!-- About Us -->
-<section class="ad-about-section ad-about-page-section">
-    <div class="container ad-about-container about-page-container">
-        <div class="ad-about-image-container position-relative">
-            <div class="ad-about-person-image">
-                <img src="{{ asset('mncofee/assets/img/aida-images/about-picture1.png') }}" alt="">
-            </div>
-            <div class="mt-sm-5 ad-about-side-image-container">
-                <img class="ad-about-side-tea about-page-cup" src="{{ asset('mncofee/assets/img/aida-images/about-page-cup.png') }}" alt="">
-                <img class=" ad-about-bottom-image about-page-bottom-image" src="{{ asset('mncofee/assets/img/aida-images/about-page-image.png') }}" alt="">
+    <!-- about-main-area-start -->
+    <div class="about-main-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-12">
+                    <div class="about-img">
+                        <a href="#"><img src="{{ asset('ebook/img/banner/32.jpg') }}" alt="about" /></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 col-12">
+                    <div class="about-content">
+                        <h3>{{ $content->subtitle ?? 'Why' }}<span>{{ $content->title ?? 'We are?' }}</span></h3>
+                        <p>{{ $content->description ?? 'Islamic Book BD is committed to making authentic Islamic knowledge accessible to everyone in Bangladesh. We curate a vast collection of Quran, Hadith, and scholarly works from trusted publishers.' }}</p>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-check"></i>Authentic Islamic literature</a></li>
+                            <li><a href="#"><i class="fa fa-check"></i>Trusted by scholars and readers</a></li>
+                            <li><a href="#"><i class="fa fa-check"></i>Wide range of categories</a></li>
+                            <li><a href="#"><i class="fa fa-check"></i>Fast and reliable delivery</a></li>
+                            <li><a href="#"><i class="fa fa-check"></i>Secure online shopping</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="ad-about-text-container">
-            <h5>{{ $content->subtitle ?? 'Our Story' }}</h5>
-            <h4>{!! $content->title ?? 'Spreading Wisdom through <br> Authentic Islamic Books' !!}</h4>
-            <p>
-                {{ $content->description ?? 'Islamic Book BD is committed to making authentic Islamic knowledge accessible to everyone in Bangladesh. We curate a vast collection of Quran, Hadith, and scholarly works from trusted publishers, ensuring that our readers receive reliable spiritual guidance and high-quality literature.' }}
-            </p>
-            
-            <div class="mt-5">
-                @if(isset($content->highlights) && is_array($content->highlights))
-                    @foreach($content->highlights as $index => $highlight)
-                        <div class="mission-vision-card" data-aos="fade-left" data-aos-delay="{{ $index * 200 }}">
-                            <h4>{{ $highlight['title'] ?? '' }}</h4>
-                            <p>{{ $highlight['text'] ?? '' }}</p>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="mission-vision-card" data-aos="fade-left">
-                        <h4>Our Mission</h4>
+    </div>
+    <!-- about-main-area-end -->
+
+    <!-- our-mission-area-start -->
+    <div class="our-mission-area mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="single-misson">
+                        <h3>Our<span>Goal</span></h3>
                         <p>To provide authentic Islamic literature that nurtures the soul and fosters a deeper understanding of Islamic teachings within the community.</p>
                     </div>
-                    
-                    <div class="mission-vision-card" data-aos="fade-left" data-aos-delay="200">
-                        <h4>Our Vision</h4>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="single-misson">
+                        <h3>Our<span>Mission</span></h3>
+                        <p>To make authentic Islamic knowledge accessible to every household in Bangladesh through a reliable and user-friendly platform.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="single-misson mrg-none-xs">
+                        <h3>Our<span>Vision</span></h3>
                         <p>To become the most trusted and comprehensive online destination for Islamic books and spiritual resources in Bangladesh.</p>
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
-</section>
+    <!-- our-mission-area-end -->
 
-<!-- Core Focus -->
-@if(isset($content->meta['objectives']) && is_array($content->meta['objectives']))
-<section class="py-5" style="background: var(--bg-cream);">
-    <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h5 style="color: var(--primary-color);">{{ $content->meta['focus_subtitle'] ?? 'Our Focus' }}</h5>
-            <h2 style="font-family: 'Oswald', sans-serif;">{{ $content->meta['focus_title'] ?? 'Key Objectives' }}</h2>
-        </div>
-        <div class="row">
-            @foreach($content->meta['objectives'] as $index => $obj)
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                <div class="text-center p-4 bg-white shadow-sm rounded">
-                    <i class="{{ $obj['icon'] ?? 'fa-light fa-circle' }} fa-3x mb-3" style="color: var(--primary-color);"></i>
-                    <h5>{{ $obj['title'] ?? '' }}</h5>
-                    <p>{{ $obj['text'] ?? '' }}</p>
+    <!-- counter-area-start -->
+    <div class="counter-area pt-70 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-counter mb-30 text-center">
+                        <h2 class="counter">5000</h2>
+                        <span>Books Available</span>
+                    </div>
                 </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@else
-<section class="py-5" style="background: var(--bg-cream);">
-    <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h5 style="color: var(--primary-color);">Our Focus</h5>
-            <h2 style="font-family: 'Oswald', sans-serif;">Key Objectives</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-4 mb-4" data-aos="fade-up">
-                <div class="text-center p-4 bg-white shadow-sm rounded">
-                    <i class="fa-light fa-book-quran fa-3x mb-3" style="color: var(--primary-color);"></i>
-                    <h5>Authenticity</h5>
-                    <p>Rigorous selection process to ensure every book aligns with authentic Islamic teachings.</p>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-counter mb-30 text-center">
+                        <h2 class="counter">12000</h2>
+                        <span>Happy Readers</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-center p-4 bg-white shadow-sm rounded">
-                    <i class="fa-light fa-truck-fast fa-3x mb-3" style="color: var(--primary-color);"></i>
-                    <h5>Accessibility</h5>
-                    <p>Fast and reliable delivery service making Islamic books accessible even in the remotest areas.</p>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-counter mb-30 text-center">
+                        <h2 class="counter">500</h2>
+                        <span>Authors</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-center p-4 bg-white shadow-sm rounded">
-                    <i class="fa-light fa-hands-holding-heart fa-3x mb-3" style="color: var(--primary-color);"></i>
-                    <h5>Community Impact</h5>
-                    <p>Nurturing a well-informed and spiritually uplifted community through righteous knowledge.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-
-<!-----------------------
-    Customer Review
----------------------->
-<section data-aos="fade-up" class="py-5">
-    <div class="ad-customer-review">
-        <div class="ad-review-title-container">
-            <img src="{{ asset('mncofee/assets/img/aida-images/service-icon.png') }}" alt="">
-            <h4>What Our Partners Say</h4>
-        </div>
-        <div class="container position-relative">
-            <div class="ad-review-bg-container">
-                <div>
-                    <img src="{{ asset('mncofee/assets/img/aida-images/about-page-review-bg.png') }}" alt="">
-                </div>
-                <div class="d-flex gap-3">
-                    <i class="fa-solid fa-chevron-left" data-bs-target="#reviewCarousel" data-bs-slide="prev"></i>
-                    <i class="fa-solid fa-chevron-right" data-bs-target="#reviewCarousel" data-bs-slide="next"></i>
-                </div>
-            </div>
-            <div>
-                <div id="reviewCarousel" class="carousel slide ad-review-carousel" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach($testimonials as $key => $testimonial)
-                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }} ad-single-review">
-                            <div class="d-flex gap-2">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p>{!! $testimonial->text_en !!}</p>
-                            <div class="ad-review-person-container">
-                                <img src="{{ asset('storage/testimonials/' . ($testimonial->image ?? 'default.png')) }}" alt="{{ $testimonial->name }}" style="width: 60px; height: 60px; border-radius: 50%;">
-                                <div>
-                                    <h4>{{ $testimonial->name }}</h4>
-                                    <span>{{ $testimonial->designation }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-counter mb-30 text-center">
+                        <h2 class="counter">64</h2>
+                        <span>Districts Covered</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-@endsection
+    <!-- counter-area-end -->
 
-@push('js')
-<script>
-$(document).ready(function() {
-    var rCarousel = document.querySelector('#reviewCarousel');
-    if (rCarousel) new bootstrap.Carousel(rCarousel, { interval: 5000, ride: 'carousel' });
-});
-</script>
-@endpush
+    <!-- team-area-start -->
+    {{--<div class="team-area pt-70 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="team-title text-center mb-50">
+                        <h2>Our Core Team</h2>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-team mb-30">
+                        <div class="team-img-area">
+                            <div class="team-img">
+                                <a href="#"><img src="{{ asset('ebook/img/team/1.jpg') }}" alt="team" /></a>
+                            </div>
+                            <div class="team-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h3>Marcos Alonso</h3>
+                            <span>Class Master</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-team mb-30">
+                        <div class="team-img-area">
+                            <div class="team-img">
+                                <a href="#"><img src="{{ asset('ebook/img/team/2.jpg') }}" alt="team" /></a>
+                            </div>
+                            <div class="team-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h3>Luis Aragones</h3>
+                            <span>Marketer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-team mb-30">
+                        <div class="team-img-area">
+                            <div class="team-img">
+                                <a href="#"><img src="{{ asset('ebook/img/team/3.jpg') }}" alt="team" /></a>
+                            </div>
+                            <div class="team-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h3>Maria Alessis</h3>
+                            <span>Class Master</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="single-team mb-30">
+                        <div class="team-img-area">
+                            <div class="team-img">
+                                <a href="#"><img src="{{ asset('ebook/img/team/4.jpg') }}" alt="team" /></a>
+                            </div>
+                            <div class="team-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-content text-center">
+                            <h3>John Doe</h3>
+                            <span>PHP Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>--}}
+    <!-- team-area-end -->
+@endsection
